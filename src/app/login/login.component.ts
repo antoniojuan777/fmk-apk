@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TipoMensaje } from '../clases/Constantes';
+import { Mensaje } from '../clases/Mensaje';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
       Validators.required
     ],]
   });
+  mensaje: Mensaje;
 
   constructor(
     public fb: FormBuilder,
@@ -34,6 +37,8 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       if(this.correo == 'antoniojuan777@gmail.com' && this.password=='123'){
         alert('si');
+      } else {
+        this.mensaje=new Mensaje('Correo y/o contraseña incorrectos.',TipoMensaje.ERROR);
       }
     }
   }
