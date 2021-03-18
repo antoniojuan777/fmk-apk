@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/CoolAdmin-master/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
