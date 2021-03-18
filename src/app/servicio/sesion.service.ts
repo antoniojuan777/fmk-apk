@@ -5,5 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class SesionService {
 
+  sesionIniciada: boolean = false;
+
   constructor() { }
+
+  isSesionIniciada(): boolean {
+    return this.sesionIniciada;
+  }
+
 }

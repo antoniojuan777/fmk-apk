@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SesionService } from './servicio/sesion.service';
 
 declare function iniciar():any;
 
@@ -9,7 +10,16 @@ declare function iniciar():any;
 })
 export class AppComponent {
   title = 'munasim-k';
+
+  constructor(
+    private sesion: SesionService
+  ) { }
+  
   ngOnInit(): void {
     iniciar();
+  }
+
+  isSesionIniciada():boolean{
+    return this.sesion.isSesionIniciada();
   }
 }

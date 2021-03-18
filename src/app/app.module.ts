@@ -6,16 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MensajeErrorInputComponent } from './componente/mensaje-error-input/mensaje-error-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    MensajeErrorInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: '', component: InicioComponent },

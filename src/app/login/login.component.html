@@ -8,14 +8,16 @@
                   </a>
               </div>
               <div class="login-form">
-                  <form action="" method="post">
+                  <form [formGroup]="loginForm">
                       <div class="form-group">
                           <label>Correo Electrónico</label>
-                          <input class="au-input au-input--full" type="email" name="email" placeholder="Correo Electrónico">
+                          <input class="au-input au-input--full" type="email" name="vCorreo" formControlName="vCorreo" [(ngModel)]="correo" placeholder="Correo Electrónico">
+                          <mensaje-error-input [control]="f.vCorreo"></mensaje-error-input>
                       </div>
                       <div class="form-group">
                           <label>Contraseña</label>
-                          <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
+                          <input class="au-input au-input--full" type="password" name="vPassword" formControlName="vPassword" [(ngModel)]="password" placeholder="Contraseña">
+                          <mensaje-error-input [control]="f.vPassword"></mensaje-error-input>
                       </div>
                       <div class="login-checkbox">
                           <label>
@@ -25,7 +27,7 @@
                               <a href="#">Olvidaste tu contraseña?</a>
                           </label>
                       </div>
-                      <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">ingresar</button>
+                      <button class="au-btn au-btn--block au-btn--green m-b-20" type="button" (click)="ingresar()">ingresar</button>
                   </form>
               </div>
           </div>

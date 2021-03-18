@@ -1,0 +1,22 @@
+<div class="invalid-feedback" style="display: block;"
+    *ngIf="control && control.errors && (control.dirty || control.touched)">
+    <div *ngIf="control.errors.required">El campo es requerido</div>
+    <div *ngIf="control.errors.minlength">El campo debe tener {{ control.errors.minlength.requiredLength }} o más
+        caracteres.</div>
+    <div *ngIf="control.errors.maxlength">El campo no debe tener más de {{
+        control.errors.maxlength.requiredLength }} caracteres.</div>
+    <div *ngIf="control.errors.email">El correo no cumple con el formato requerido.</div>
+    <div *ngIf="control.errors.pattern">El campo no cumple con el formato requerido.</div>
+    <div *ngIf="control.errors.min">El campo debe ser mayor o igual a {{ control.errors.min.min }}.</div>
+    <div *ngIf="control.errors.max">El campo debe ser menor o igual a {{ control.errors.max.max }}.</div>
+    <div *ngIf="control.errors.unique">{{control.errors.unique}}</div>
+    <div *ngIf="control.errors.lessThen">{{control.errors.lessThen}}</div>
+    <div *ngIf="control.errors.greaterThan">{{control.errors.greaterThan}}</div>
+    <div *ngIf="control.errors.mobile">{{control.errors.mobile}}</div>
+    <div *ngIf="control.errors.confirmPassword">{{control.errors.confirmPassword}}</div>
+    <div *ngIf="control.errors.maxlengthNumerico">El campo no debe tener más de {{
+        control.errors.maxlengthNumerico.requiredLength }} dígitos.</div>
+    <div *ngIf="control.errors.minlengthNumerico">El campo debe tener {{
+        control.errors.minlengthNumerico.requiredLength }} o más dígitos.</div>
+    <div *ngIf="control.errors.mustMatch">{{control.errors.mustMatch}}</div>
+</div>
