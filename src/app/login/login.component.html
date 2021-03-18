@@ -7,7 +7,7 @@
             <img src="/assets/CoolAdmin-master/images/icon/logo.png" alt="CoolAdmin">
           </a>
         </div>
-        <div class="login-form">
+        <div class="login-form" (submit)="ingresar()">
           <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
           <form [formGroup]="loginForm">
             <div class="form-group">
@@ -30,8 +30,7 @@
                 <a href="#">Olvidaste tu contraseña?</a>
               </label>
             </div>
-            <button class="au-btn au-btn--block au-btn--green m-b-20" type="button"
-              (click)="ingresar()">ingresar</button>
+            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">ingresar</button>
           </form>
         </div>
       </div>

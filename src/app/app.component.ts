@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { SesionService } from './servicio/sesion.service';
 
-declare function iniciar():any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,10 +14,14 @@ export class AppComponent {
   ) { }
   
   ngOnInit(): void {
-    iniciar();
+    
   }
 
   isSesionIniciada():boolean{
     return this.sesion.isSesionIniciada();
+  }
+
+  cerrarSesion():void{
+    this.sesion.cerrarSesion();
   }
 }

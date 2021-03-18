@@ -4,13 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SesionService {
-
-  sesionIniciada: boolean = false;
-
   constructor() { }
 
   isSesionIniciada(): boolean {
-    return this.sesionIniciada;
+    return localStorage.getItem('sesionIniciada')=='true';
   }
 
+  iniciarSesion() {
+    localStorage.setItem('sesionIniciada', 'true');
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('sesionIniciada');
+  }
 }
