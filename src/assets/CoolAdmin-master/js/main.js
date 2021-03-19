@@ -1,4 +1,4 @@
-function iniciarSesion(){
+function iniciarComponentes(){
   console.log('iniciar js');
   submenu();
   scrollbar();
