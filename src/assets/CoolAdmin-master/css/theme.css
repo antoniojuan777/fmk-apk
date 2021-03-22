@@ -1530,19 +1530,19 @@ section {
     right: 33px;
 }
 
-.account-dropdown__item a {
+.account-dropdown__item {
     display: block;
     color: #333;
     padding: 15px 25px;
     font-size: 14px;
 }
 
-.account-dropdown__item a:hover {
+.account-dropdown__item:hover {
     background: #4272d7;
     color: #fff;
 }
 
-.account-dropdown__item a i {
+.account-dropdown__item i {
     line-height: 1;
     margin-right: 20px;
     font-size: 18px;
@@ -1557,19 +1557,19 @@ section {
     border-top: 1px solid #f2f2f2;
 }
 
-.account-dropdown__footer a {
+.account-dropdown__footer {
     display: block;
     color: #333;
     padding: 15px 25px;
     font-size: 14px;
 }
 
-.account-dropdown__footer a:hover {
+.account-dropdown__footer:hover {
     background: #4272d7;
     color: #fff;
 }
 
-.account-dropdown__footer a i {
+.account-dropdown__footer i {
     line-height: 1;
     margin-right: 20px;
     font-size: 18px;

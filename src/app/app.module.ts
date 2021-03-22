@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MensajeErrorInputComponent } from './componente/mensaje-error-input/mensaje-error-input.component';
 import { MensajeComponent } from './componente/mensaje/mensaje.component';
 import { RegistroParceroComponent } from './educador-ce/registro-parcero/registro-parcero.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './componente/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { RegistroParceroComponent } from './educador-ce/registro-parcero/registr
     InicioComponent,
     MensajeErrorInputComponent,
     MensajeComponent,
-    RegistroParceroComponent
+    RegistroParceroComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: InicioComponent },
       { path: 'login', component: LoginComponent },

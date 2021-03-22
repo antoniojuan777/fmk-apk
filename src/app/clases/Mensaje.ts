@@ -1,6 +1,7 @@
 import { TipoMensaje } from "./Constantes";
 
 export class Mensaje {
+    
     constructor(
         public mensaje: string,
         public tipo: number

@@ -1,3 +1,4 @@
+<loading *ngIf="cargando"></loading>
 <div class="page-content--bge5">
   <div class="container">
     <div class="login-wrap">
@@ -7,18 +8,18 @@
             <img src="/assets/CoolAdmin-master/images/icon/logo.png" alt="CoolAdmin">
           </a>
         </div>
-        <div class="login-form" (submit)="ingresar()">
+        <div class="login-form">
           <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
-          <form [formGroup]="loginForm">
+          <form [formGroup]="loginForm" (submit)="ingresar()">
             <div class="form-group">
               <label>Correo Electrónico</label>
-              <input class="au-input au-input--full" type="email" name="vCorreo" formControlName="vCorreo"
+              <input class="au-input au-input--full" type="email" formControlName="vCorreo"
                 [(ngModel)]="correo" placeholder="Correo Electrónico">
               <mensaje-error-input [control]="f.vCorreo"></mensaje-error-input>
             </div>
             <div class="form-group">
               <label>Contraseña</label>
-              <input class="au-input au-input--full" type="password" name="vPassword" formControlName="vPassword"
+              <input class="au-input au-input--full" type="password" formControlName="vPassword"
                 [(ngModel)]="password" placeholder="Contraseña">
               <mensaje-error-input [control]="f.vPassword"></mensaje-error-input>
             </div>

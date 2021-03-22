@@ -1,3 +1,4 @@
+<loading *ngIf="cargando"></loading>
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <header class="header-mobile d-block d-lg-none" [style.display]="isSesionIniciada()?'':'none'">
@@ -359,43 +360,42 @@
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="/assets/CoolAdmin-master/images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img src="/assets/CoolAdmin-master/images/icon/avatar-01.jpg" alt="{{nombreUsuario()}}" />
                                     </div>
                                     <div class="content">
-                                        <a class="js-acc-btn" href="#">john doe</a>
+                                        <a class="js-acc-btn" href="#">{{nombreUsuario()}}</a>
                                     </div>
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
                                             <div class="image">
                                                 <a href="#">
                                                     <img src="/assets/CoolAdmin-master/images/icon/avatar-01.jpg"
-                                                        alt="John Doe" />
+                                                        alt="{{nombreUsuario()}}" />
                                                 </a>
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">
-                                                    <a href="#">john doe</a>
+                                                    <a href="#">{{nombreUsuario()}}</a>
                                                 </h5>
-                                                <span class="email">johndoe@example.com</span>
+                                                <span class="email">{{correoUsuario()}}</span>
                                             </div>
                                         </div>
                                         <div class="account-dropdown__body">
                                             <div class="account-dropdown__item">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-account"></i>Account</a>
+                                                
+                                                    <i class="zmdi zmdi-account"></i>Account
                                             </div>
                                             <div class="account-dropdown__item">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                
+                                                    <i class="zmdi zmdi-settings"></i>Setting
                                             </div>
                                             <div class="account-dropdown__item">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                
+                                                    <i class="zmdi zmdi-money-box"></i>Billing
                                             </div>
                                         </div>
-                                        <div class="account-dropdown__footer">
-                                            <a routerLink="/login" (click)="cerrarSesion()">
-                                                <i class="zmdi zmdi-power"></i>Salir</a>
+                                        <div class="account-dropdown__footer" (click)="cerrarSesion()">
+                                            <i class="zmdi zmdi-power"></i>Salir
                                         </div>
                                     </div>
                                 </div>
