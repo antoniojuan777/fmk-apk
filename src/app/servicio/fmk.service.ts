@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SesionService } from './sesion.service';
 import { Aplicacion } from '../clases/Constantes';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,20 @@ import { Aplicacion } from '../clases/Constantes';
 export class FmkService {
   constructor(
     public http: HttpClient,
-    private sesion: SesionService
+    private sesion: SesionService,
+    private router: Router
   ) { }
 
   getGlobal<Object>(url: string) {
-    return this.http.get<Object>(Aplicacion.DOMINIO_FMK + '/api' + url);
+    let headers = new HttpHeaders();
+    headers = headers.set('content-type', 'application/json');
+    if (this.sesion.isSesionIniciada()) {
+      headers = headers.set('Authorization', 'Bearer ' + this.sesion.get('token'));
+    }
+
+    return this.http.get<Object>(Aplicacion.DOMINIO_FMK + '/api' + url, {
+      headers: headers
+    });
   }
   postGlobal<Object>(url: string, objeto: any) {
     let headers = new HttpHeaders();
@@ -54,6 +64,7 @@ export class FmkService {
     console.log(error);
     if (error.status == 401) {
       this.sesion.cerrarSesion();
+      this.router.navigate(['/login']);
     }
   }
 }

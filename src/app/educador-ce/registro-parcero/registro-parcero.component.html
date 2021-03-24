@@ -1,3 +1,4 @@
+<loading *ngIf="cargando"></loading>
 <div class="section__content section__content--p30">
     <div class="container-fluid">
         <div class="row">
@@ -9,6 +10,7 @@
                             <h3 class="text-center title-2">Datos Personales</h3>
                         </div>
                         <hr>
+                        <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
                         <form [formGroup]="parceroForm">
                             <div class="row">
                                 <div class="col-4">
@@ -16,74 +18,48 @@
                                         <label for="fecha-contacto" class="control-label mb-1">Fecha Contacto</label>
                                         <input id="fecha-contacto" type="date" class="form-control"
                                             formControlName="vFechaContacto" [(ngModel)]="parcero.fechaContacto">
+                                        <mensaje-error-input [control]="f.vFechaContacto"></mensaje-error-input>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <label for="x_card_code" class="control-label mb-1">Hora Contacto</label>
-                                    <div class="input-group">
-                                        <input id="x_card_code" name="x_card_code" type="time"
-                                            class="form-control cc-cvc" value="" data-val="true"
-                                            data-val-required="Please enter the security code"
-                                            data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
-
+                                    <div class="form-group">
+                                        <label for="hora-contacto" class="control-label mb-1">Hora Contacto</label>
+                                        <input id="hora-contacto" type="time" class="form-control"
+                                            formControlName="vHoraContacto" [(ngModel)]="parcero.horaContacto">
+                                        <mensaje-error-input [control]="f.vHoraContacto"></mensaje-error-input>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <label for="x_card_code" class="control-label mb-1">Institución</label>
-                                    <div class="input-group">
-                                        <input id="x_card_code" name="x_card_code" type="tel"
-                                            class="form-control cc-cvc" value="" data-val="true"
-                                            data-val-required="Please enter the security code"
-                                            data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
-
+                                    <div class="form-group">
+                                        <label for="institucion" class="control-label mb-1">Institución</label>
+                                        <input id="institucion" type="text" class="form-control"
+                                            formControlName="vInstitucion" [(ngModel)]="parcero.institucion">
+                                        <mensaje-error-input [control]="f.vInstitucion"></mensaje-error-input>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Payment amount</label>
-                                <input id="cc-pament" name="cc-payment" type="text" class="form-control"
-                                    aria-required="true" aria-invalid="false" value="100.00">
-                            </div>
-                            <div class="form-group has-success">
-                                <label for="cc-name" class="control-label mb-1">Name on card</label>
-                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid"
-                                    data-val="true" data-val-required="Please enter the name on card"
-                                    autocomplete="cc-name" aria-required="true" aria-invalid="false"
-                                    aria-describedby="cc-name-error">
-                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                    data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="cc-number" class="control-label mb-1">Card number</label>
-                                <input id="cc-number" name="cc-number" type="tel"
-                                    class="form-control cc-number identified visa" value="" data-val="true"
-                                    data-val-required="Please enter the card number"
-                                    data-val-cc-number="Please enter a valid card number" autocomplete="cc-number">
-                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label for="cc-exp" class="control-label mb-1">Expiration</label>
-                                        <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value=""
-                                            data-val="true" data-val-required="Please enter the card expiration"
-                                            data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY"
-                                            autocomplete="cc-exp">
-                                        <span class="help-block" data-valmsg-for="cc-exp"
-                                            data-valmsg-replace="true"></span>
+                                        <label for="servicio" class="control-label mb-1">Tipo de Servicio</label>
+                                        <select id="servicio" class="form-control" formControlName="vServicio" [(ngModel)]="parcero.servicio">
+                                            <option value="{{servicio.codigo}}" *ngFor="let servicio of servicios">{{servicio.valor}}</option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vServicio"></mensaje-error-input>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <label for="x_card_code" class="control-label mb-1">Security code</label>
-                                    <div class="input-group">
-                                        <input id="x_card_code" name="x_card_code" type="tel"
-                                            class="form-control cc-cvc" value="" data-val="true"
-                                            data-val-required="Please enter the security code"
-                                            data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
-
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="forma-contacto" class="control-label mb-1">Forma de Contacto</label>
+                                        <select id="forma-contacto" class="form-control" formControlName="vFormaContacto" [(ngModel)]="parcero.formaContacto">
+                                            <option value="{{formaContacto.codigo}}" *ngFor="let formaContacto of formasContactos">{{formaContacto.valor}}</option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vFormaContacto"></mensaje-error-input>
                                     </div>
                                 </div>
+                                
                             </div>
+                            
                             <div>
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                     <i class="fa fa-lock fa-lg"></i>&nbsp;
