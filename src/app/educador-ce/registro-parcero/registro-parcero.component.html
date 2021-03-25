@@ -13,7 +13,7 @@
                         <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
                         <form [formGroup]="parceroForm">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="fecha-contacto" class="control-label mb-1">Fecha Contacto</label>
                                         <input id="fecha-contacto" type="date" class="form-control"
@@ -21,7 +21,7 @@
                                         <mensaje-error-input [control]="f.vFechaContacto"></mensaje-error-input>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="hora-contacto" class="control-label mb-1">Hora Contacto</label>
                                         <input id="hora-contacto" type="time" class="form-control"
@@ -29,7 +29,7 @@
                                         <mensaje-error-input [control]="f.vHoraContacto"></mensaje-error-input>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="institucion" class="control-label mb-1">Institución</label>
                                         <input id="institucion" type="text" class="form-control"
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="servicio" class="control-label mb-1">Tipo de Servicio</label>
                                         <select id="servicio" class="form-control" formControlName="vServicio" [(ngModel)]="parcero.servicio">
@@ -48,7 +48,7 @@
                                         <mensaje-error-input [control]="f.vServicio"></mensaje-error-input>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="forma-contacto" class="control-label mb-1">Forma de Contacto</label>
                                         <select id="forma-contacto" class="form-control" formControlName="vFormaContacto" [(ngModel)]="parcero.formaContacto">
@@ -59,22 +59,48 @@
                                 </div>
                                 
                             </div>
-                            
-                            <div>
-                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                    <span id="payment-button-amount">Pay $100.00</span>
-                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                </button>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nombre" class="control-label mb-1">Nombre(s)</label>
+                                        <input id="nombre" type="text" class="form-control"
+                                            formControlName="vNombre" [(ngModel)]="parcero.nombre">
+                                        <mensaje-error-input [control]="f.vNombre"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="apellido" class="control-label mb-1">Apellidos(s)</label>
+                                        <input id="apellido" type="text" class="form-control"
+                                            formControlName="vApellido" [(ngModel)]="parcero.apellido">
+                                        <mensaje-error-input [control]="f.vApellido"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="apodo" class="control-label mb-1">Apodo</label>
+                                        <input id="apodo" type="text" class="form-control"
+                                            formControlName="vApodo" [(ngModel)]="parcero.apodo">
+                                        <mensaje-error-input [control]="f.vApodo"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="edad" class="control-label mb-1">Edad</label>
+                                        <input id="edad" type="text" class="form-control"
+                                            formControlName="vEdad" [(ngModel)]="parcero.edad">
+                                        <mensaje-error-input [control]="f.vEdad"></mensaje-error-input>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">Action</button>
-                        <button class="btn btn-danger btn-sm">Action</button>
-                        <button class="btn btn-warning btn-sm">Action</button>
-                        <button class="btn btn-info btn-sm">Action</button>
-                        <button class="btn btn-success btn-sm">Action</button>
+                        <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
                     </div>
                 </div>
             </div>

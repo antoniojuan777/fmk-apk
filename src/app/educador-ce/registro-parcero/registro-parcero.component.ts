@@ -27,7 +27,19 @@ export class RegistroParceroComponent implements OnInit {
     vHoraContacto: ['', []],
     vInstitucion: ['', []],
     vServicio: ['', []],
-    vFormaContacto: ['', []]
+    vFormaContacto: ['', []],
+    vNombre: ['', [
+      Validators.pattern('[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð \',.-]{2,48}')
+    ]],
+    vApellido: ['', [
+      Validators.pattern('[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.\'-]{2,64}')
+    ]],
+    vApodo: ['', []],
+    vEdad: ['', [
+      Validators.pattern('^[0-9]+'),
+      Validators.min(1),
+      Validators.max(150)
+    ]]
   });
   mensaje: Mensaje;
 
@@ -35,13 +47,13 @@ export class RegistroParceroComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private fmk:FmkService,
-    private util:UtilService
+    private fmk: FmkService,
+    private util: UtilService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.cargando = true;
-    let resDatosIniciales:ResponseDatosIniciales;
+    let resDatosIniciales: ResponseDatosIniciales;
     try {
       resDatosIniciales = await this.fmk.getGlobal<ResponseDatosIniciales>('/registro-parcero/datos-iniciales').toPromise();
     } catch (error) {
@@ -55,4 +67,7 @@ export class RegistroParceroComponent implements OnInit {
     this.cargando = false;
   }
 
+  guardar(){
+    console.log('Parcero',this.parcero);
+  }
 }
