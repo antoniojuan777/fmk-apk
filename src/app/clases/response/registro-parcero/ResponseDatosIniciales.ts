@@ -6,7 +6,8 @@ export class ResponseDatosIniciales extends ResponseGlobal{
         public ok:boolean,
         public mensaje:string,
         public servicios:TipoDato[],
-        public formasContactos:TipoDato[]
+        public formasContactos:TipoDato[],
+        public paises:TipoDato[]
     ){
         super(ok, mensaje);
     }

@@ -8,7 +8,13 @@ export class Parcero{
         public nombre?:string,
         public apellido?:string,
         public apodo?:string,
-        public edad?:number
+        public edad?:number,
+        public genero?:string,
+        public celular?:string,
+        public pais?:string,
+        public ciudad?:string,
+        public calle?:string,
+        public comentarios?:string
     ){
 
     }

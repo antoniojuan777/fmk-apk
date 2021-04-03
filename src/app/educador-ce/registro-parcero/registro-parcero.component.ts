@@ -20,16 +20,18 @@ export class RegistroParceroComponent implements OnInit {
   parcero: Parcero = new Parcero();
   servicios: TipoDato[];
   formasContactos: TipoDato[];
+  paises: TipoDato[];
 
   parceroForm: FormGroup = this.fb.group({
     vFechaContacto: ['', [
-      Validators.required]],
+      Validators.pattern("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/[0-9]{4}")
+    ]],
     vHoraContacto: ['', []],
     vInstitucion: ['', []],
     vServicio: ['', []],
     vFormaContacto: ['', []],
     vNombre: ['', [
-      Validators.pattern('[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð \',.-]{2,48}')
+      Validators.pattern('[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð \',.-]{2,48}[a-z]{2}')
     ]],
     vApellido: ['', [
       Validators.pattern('[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.\'-]{2,64}')
@@ -39,7 +41,19 @@ export class RegistroParceroComponent implements OnInit {
       Validators.pattern('^[0-9]+'),
       Validators.min(1),
       Validators.max(150)
-    ]]
+    ]],
+    vGenero: ['', [
+      Validators.required
+    ]],
+    vCelular: ['', [
+      Validators.pattern('^[0-9]+'),
+      Validators.minLength(8),
+      Validators.maxLength(8)
+    ]],
+    vPais: ['', []],
+    vCiudad: ['', []],
+    vCalle: ['', []],
+    vComentarios: ['', []],
   });
   mensaje: Mensaje;
 
@@ -64,10 +78,13 @@ export class RegistroParceroComponent implements OnInit {
     }
     this.servicios = resDatosIniciales.servicios;
     this.formasContactos = resDatosIniciales.formasContactos;
+    this.paises = resDatosIniciales.paises;
     this.cargando = false;
   }
 
   guardar(){
     console.log('Parcero',this.parcero);
+    if (this.util.validar(this.parceroForm)) {
+    }
   }
 }
