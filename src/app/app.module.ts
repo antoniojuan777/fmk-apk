@@ -12,6 +12,7 @@ import { MensajeComponent } from './componente/mensaje/mensaje.component';
 import { RegistroParceroComponent } from './educador-ce/registro-parcero/registro-parcero.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './componente/loading/loading.component';
+import { DetalleParceroComponent } from './parcero/detalle-parcero/detalle-parcero.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoadingComponent } from './componente/loading/loading.component';
     MensajeErrorInputComponent,
     MensajeComponent,
     RegistroParceroComponent,
-    LoadingComponent
+    LoadingComponent,
+    DetalleParceroComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { LoadingComponent } from './componente/loading/loading.component';
       { path: '', component: InicioComponent },
       { path: 'login', component: LoginComponent },
       { path: 'educador-ce/registro-parcero', component: RegistroParceroComponent },
+      { path: 'parcero/detalle-parcero', component: DetalleParceroComponent }
     ])
   ],
   providers: [],

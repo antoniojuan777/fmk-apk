@@ -1,12 +1,13 @@
 export class Parcero{
     constructor(
-        public fechaContacto?:string,
-        public horaContacto?:string,
+        public id?:number,
+        public fecha_contacto?:string,
+        public hora_contacto?:string,
         public institucion?:string,
         public servicio?:string,
-        public formaContacto?:string,
-        public nombre?:string,
-        public apellido?:string,
+        public forma_contacto?:string,
+        public nombres?:string,
+        public apellidos?:string,
         public apodo?:string,
         public edad?:number,
         public genero?:string,
@@ -14,7 +15,7 @@ export class Parcero{
         public pais?:string,
         public ciudad?:string,
         public calle?:string,
-        public comentarios?:string
+        public comentario?:string
     ){
 
     }

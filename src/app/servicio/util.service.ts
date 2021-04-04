@@ -5,10 +5,10 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class UtilService {
-  
+
   constructor() { }
 
-  validar(form: FormGroup):boolean {
+  validar(form: FormGroup): boolean {
     Object.keys(form.controls).forEach(key => {
       form.controls[key].markAsDirty();
     });
@@ -24,8 +24,11 @@ export class UtilService {
     } else {
       // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      if (error.error) {
+        errorMessage += "; " + error.error.message;
+      }
     }
     return errorMessage;
   }
-  
+
 }
