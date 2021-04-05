@@ -1,25 +1,63 @@
-<p>inicio works!</p>
-<!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+<loading *ngIf="cargando"></loading>
+<div class="section__content section__content--p30" *ngIf="rol">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="overview-wrap">
+          <h2 class="title-1">Visión General</h2>
+          <button class="au-btn au-btn-icon au-btn--blue" *ngIf="rol.isEducadorCE() && rol.registra"
+            routerLink="/educador-ce/registro-parcero">
+            <i class="zmdi zmdi-plus"></i>Registrar Parcero
           </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
-  </div>-->
+    <div class="row" *ngIf="mensaje">
+      <div class="col-lg-12">
+        <mensaje [mensaje]="mensaje"></mensaje>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
+          <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
+            <div class="bg-overlay bg-overlay--blue"></div>
+            <h3>
+              <i class="zmdi zmdi-comment-text"></i>Nuevos Parceros
+            </h3>
+          </div>
+          <div class="au-inbox-wrap js-inbox-wrap">
+            <div class="au-message js-list-load">
+              <div class="au-message__noti">
+                <p>Hoy tienes
+                  <span>2</span>
+                  nuevos parceros
+                </p>
+              </div>
+              <div class="au-message-list">
+                <div class="au-message__item" *ngFor="let parcero of parceros" (click)="irDetalleParcero(parcero)">
+                  <div class="au-message__item-inner">
+                    <div class="au-message__item-text">
+                      <div class="avatar-wrap">
+                        <div class="avatar">
+                          <img src="images/icon/avatar-02.jpg" alt="{{parcero.nombres}} {{parcero.apellidos}}">
+                        </div>
+                      </div>
+                      <div class="text">
+                        <h5 class="name">{{parcero.nombres}} {{parcero.apellidos}}</h5>
+                        <p *ngIf="parcero.apodo">"{{parcero.apodo}}"</p>
+                      </div>
+                    </div>
+                    <div class="au-message__item-time">
+                      <span>{{parcero.created_at | date:"dd/MM/yyyy HH:mm"}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Rol } from '../clases/Rol';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ export class SesionService {
     return localStorage.getItem('sesionIniciada') == 'true';
   }
 
-  iniciarSesion(token: string, correo:string, nombre:string) {
+  iniciarSesion(token: string, correo:string, nombre:string, rol:Rol) {
     localStorage.setItem('sesionIniciada', 'true');
     localStorage.setItem('token', token);
     localStorage.setItem('correo', correo);
     localStorage.setItem('nombre', nombre);
+    localStorage.setItem('rol', JSON.stringify(rol));
   }
 
   cerrarSesion() {
@@ -22,6 +24,7 @@ export class SesionService {
     localStorage.removeItem('token');
     localStorage.removeItem('correo');
     localStorage.removeItem('nombre');
+    localStorage.removeItem('rol');
   }
 
   get(llave: string):any {

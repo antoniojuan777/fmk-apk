@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         return;
       }
       if (resLogin.ok) {
-        this.sesion.iniciarSesion(resLogin.token, resLogin.user.email, resLogin.user.name);
+        this.sesion.iniciarSesion(resLogin.token, resLogin.user.email, resLogin.user.name, resLogin.rol);
         this.router.navigate(['/']);
       } else {
         this.mensaje = new Mensaje(resLogin.mensaje, TipoMensaje.ALERTA);

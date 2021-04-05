@@ -7,3 +7,7 @@ export const TipoMensaje = {
 export const Aplicacion = {
     DOMINIO_FMK: 'http://localhost'
 }
+export const IdRol = {
+    SUPERADMINISTRADOR: 1,
+    EDUCADOR_CE: 2
+}
