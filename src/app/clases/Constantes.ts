@@ -15,3 +15,9 @@ export const Genero = {
     HOMBRE: 'H',
     MUJER: 'M'
 }
+export const Accion={
+    REGISTRA:1,
+    RECUPERA:2,
+    IMPRIME:3,
+    ELIMINA:4
+}

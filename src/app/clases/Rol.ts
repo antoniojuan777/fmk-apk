@@ -12,10 +12,6 @@ export class Rol {
 
     }
 
-    isEducadorCE() {
-        return this.id == IdRol.SUPERADMINISTRADOR || this.id == IdRol.EDUCADOR_CE;
-    }
-
     static fromStringJSON(jsonString: string): Rol {
         let rolJson = JSON.parse(jsonString);
         let rol: Rol = new Rol(rolJson.id,

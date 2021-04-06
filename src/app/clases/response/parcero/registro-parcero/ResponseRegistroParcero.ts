@@ -1,5 +1,5 @@
-import { Parcero } from "../../Parcero";
-import { ResponseGlobal } from "../ResponseGlobal";
+import { Parcero } from "../../../Parcero";
+import { ResponseGlobal } from "../../ResponseGlobal";
 
 export class ResponseRegistroParcero extends ResponseGlobal{
 

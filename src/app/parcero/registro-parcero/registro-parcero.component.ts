@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { TipoMensaje } from 'src/app/clases/Constantes';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Accion, IdRol, TipoMensaje } from 'src/app/clases/Constantes';
 import { Mensaje } from 'src/app/clases/Mensaje';
 import { Parcero } from 'src/app/clases/Parcero';
-import { RequestParceroDatosIniciales } from 'src/app/clases/request/RequestParceroDatosIniciales';
-import { ResponseDatosIniciales } from 'src/app/clases/response/registro-parcero/ResponseDatosIniciales';
-import { ResponseRegistroParcero } from 'src/app/clases/response/registro-parcero/ResponseRegistroParcero';
-import { ResponseGlobal } from 'src/app/clases/response/ResponseGlobal';
+import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/registro-parcero/ResponseDatosIniciales';
+import { ResponseRegistroParcero } from 'src/app/clases/response/parcero/registro-parcero/ResponseRegistroParcero';
 import { TipoDato } from 'src/app/clases/TipoDato';
 import { FmkService } from 'src/app/servicio/fmk.service';
 import { ParamService } from 'src/app/servicio/param.service';
+import { SesionService } from 'src/app/servicio/sesion.service';
 import { UtilService } from 'src/app/servicio/util.service';
 
 @Component({
@@ -61,6 +60,7 @@ export class RegistroParceroComponent implements OnInit {
     vCalle: ['', []],
     vComentario: ['', []],
   });
+  modoLectura: boolean = true;
 
   get f() { return this.parceroForm.controls; }
 
@@ -69,24 +69,38 @@ export class RegistroParceroComponent implements OnInit {
     private fmk: FmkService,
     private util: UtilService,
     private router: Router,
+    private route: ActivatedRoute,
+    private sesion: SesionService,
     private param: ParamService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.cargando = true;
-    let resDatosIniciales: ResponseDatosIniciales;
-    try {
-      resDatosIniciales = await this.fmk.getGlobal<ResponseDatosIniciales>('/registro-parcero/datos-iniciales').toPromise();
-    } catch (error) {
-      this.fmk.verificarSesion(error);
-      this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
+    this.mensaje = null;
+    this.route.params.subscribe(async params => {
+      this.modoLectura = !this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE);
+      let parcero_id = params['parcero_id'];
+      let resDatosIniciales: ResponseDatosIniciales;
+      let reqDatosIniciales: { parcero_id: number };
+      if (parcero_id) {
+        reqDatosIniciales = { parcero_id: parcero_id };
+      }
+      try {
+        resDatosIniciales = await this.fmk.postGlobal<ResponseDatosIniciales>('/registro-parcero/datos-iniciales', reqDatosIniciales).toPromise();
+      } catch (error) {
+        this.fmk.verificarSesion(error);
+        this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
+        this.cargando = false;
+        return;
+      }
+      this.servicios = resDatosIniciales.servicios;
+      this.formasContactos = resDatosIniciales.formasContactos;
+      this.paises = resDatosIniciales.paises;
+      if (parcero_id) {
+        this.parcero = resDatosIniciales.parcero;
+      }
       this.cargando = false;
-      return;
-    }
-    this.servicios = resDatosIniciales.servicios;
-    this.formasContactos = resDatosIniciales.formasContactos;
-    this.paises = resDatosIniciales.paises;
-    this.cargando = false;
+    });
   }
 
   async guardar() {
@@ -95,23 +109,23 @@ export class RegistroParceroComponent implements OnInit {
     if (this.util.validar(this.parceroForm)) {
       this.cargando = true;
       let resDatosIniciales: ResponseRegistroParcero;
-      let reqParceroDatosIniciales: RequestParceroDatosIniciales = new RequestParceroDatosIniciales(this.parcero);
-      console.log('reqParceroDatosIniciales',reqParceroDatosIniciales);
+      let reqRegistrarParcero: { parcero: Parcero } = { parcero: this.parcero }
+      //console.log('reqParceroDatosIniciales', reqRegistrarParcero);
       try {
-        resDatosIniciales = await this.fmk.postGlobal<ResponseRegistroParcero>('/registro-parcero/registrar', reqParceroDatosIniciales).toPromise();
+        resDatosIniciales = await this.fmk.postGlobal<ResponseRegistroParcero>('/registro-parcero/registrar', reqRegistrarParcero).toPromise();
       } catch (error) {
         this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
         this.cargando = false;
         return;
       }
       if (resDatosIniciales.ok) {
-        this.param.set('parcero', resDatosIniciales.parcero);
         this.param.set('mensaje', new Mensaje(resDatosIniciales.mensaje, TipoMensaje.EXITO));
-        this.router.navigate(['/parcero/detalle-parcero']);
+        this.router.navigate(['/parcero/detalle-parcero', resDatosIniciales.parcero.id]);
       } else {
         this.mensaje = new Mensaje(resDatosIniciales.mensaje, TipoMensaje.ALERTA);
       }
       this.cargando = false;
     }
   }
+
 }

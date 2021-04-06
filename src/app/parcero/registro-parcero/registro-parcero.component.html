@@ -18,7 +18,7 @@
                                         <label for="fecha-contacto" class="control-label mb-1">Fecha Contacto</label>
                                         <input id="fecha-contacto" type="date" class="form-control"
                                             placeholder="dd/mm/aaaa" formControlName="vFechaContacto"
-                                            [(ngModel)]="parcero.fecha_contacto">
+                                            [(ngModel)]="parcero.fecha_contacto" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vFechaContacto"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -26,7 +26,8 @@
                                     <div class="form-group">
                                         <label for="hora-contacto" class="control-label mb-1">Hora Contacto</label>
                                         <input id="hora-contacto" type="time" class="form-control"
-                                            formControlName="vHoraContacto" [(ngModel)]="parcero.hora_contacto">
+                                            [readonly]="modoLectura" formControlName="vHoraContacto"
+                                            [(ngModel)]="parcero.hora_contacto">
                                         <mensaje-error-input [control]="f.vHoraContacto"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -34,7 +35,8 @@
                                     <div class="form-group">
                                         <label for="institucion" class="control-label mb-1">Institución</label>
                                         <input id="institucion" type="text" class="form-control"
-                                            formControlName="vInstitucion" [(ngModel)]="parcero.institucion">
+                                            [readonly]="modoLectura" formControlName="vInstitucion"
+                                            [(ngModel)]="parcero.institucion">
                                         <mensaje-error-input [control]="f.vInstitucion"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -44,7 +46,7 @@
                                     <div class="form-group">
                                         <label for="servicio" class="control-label mb-1">Tipo de Servicio</label>
                                         <select id="servicio" class="form-control" formControlName="vServicio"
-                                            [(ngModel)]="parcero.servicio">
+                                            [(ngModel)]="parcero.servicio" [attr.disabled]="modoLectura?true:null">
                                             <option value="{{servicio.codigo}}" *ngFor="let servicio of servicios">
                                                 {{servicio.valor}}</option>
                                         </select>
@@ -54,7 +56,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="forma-contacto" class="control-label mb-1">Forma de Contacto</label>
-                                        <select id="forma-contacto" class="form-control"
+                                        <select id="forma-contacto" class="form-control" [attr.disabled]="modoLectura?true:null"
                                             formControlName="vFormaContacto" [(ngModel)]="parcero.forma_contacto">
                                             <option value="{{formaContacto.codigo}}"
                                                 *ngFor="let formaContacto of formasContactos">{{formaContacto.valor}}
@@ -71,14 +73,14 @@
                                     <div class="form-group">
                                         <label for="nombres" class="control-label mb-1">Nombre(s)</label>
                                         <input id="nombres" type="text" class="form-control" formControlName="vNombres"
-                                            [(ngModel)]="parcero.nombres">
+                                            [(ngModel)]="parcero.nombres" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vNombres"></mensaje-error-input>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="apellidos" class="control-label mb-1">Apellidos(s)</label>
-                                        <input id="apellidos" type="text" class="form-control"
+                                        <input id="apellidos" type="text" class="form-control" [readonly]="modoLectura"
                                             formControlName="vApellidos" [(ngModel)]="parcero.apellidos">
                                         <mensaje-error-input [control]="f.vApellidos"></mensaje-error-input>
                                     </div>
@@ -87,7 +89,7 @@
                                     <div class="form-group">
                                         <label for="apodo" class="control-label mb-1">Apodo</label>
                                         <input id="apodo" type="text" class="form-control" formControlName="vApodo"
-                                            [(ngModel)]="parcero.apodo">
+                                            [(ngModel)]="parcero.apodo" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vApodo"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -98,7 +100,7 @@
                                     <div class="form-group">
                                         <label for="edad" class="control-label mb-1">Edad</label>
                                         <input id="edad" type="text" class="form-control" formControlName="vEdad"
-                                            [(ngModel)]="parcero.edad">
+                                            [(ngModel)]="parcero.edad" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vEdad"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -110,11 +112,13 @@
                                         <div class="form-check-inline form-check">
                                             <label for="hombre" class="form-check-label ">
                                                 <input type="radio" id="hombre" value="H" class="form-check-input"
-                                                    formControlName="vGenero" [(ngModel)]="parcero.genero">Hombre
+                                                    formControlName="vGenero" [(ngModel)]="parcero.genero"
+                                                    [attr.disabled]="modoLectura?true:null">Hombre
                                             </label>
                                             <label for="mujer" class="form-check-label ">
                                                 <input type="radio" id="mujer" value="M" class="form-check-input"
-                                                    formControlName="vGenero" [(ngModel)]="parcero.genero">Mujer
+                                                    formControlName="vGenero" [(ngModel)]="parcero.genero"
+                                                    [attr.disabled]="modoLectura?true:null">Mujer
                                             </label>
                                         </div>
                                         <mensaje-error-input [control]="f.vGenero"></mensaje-error-input>
@@ -124,7 +128,7 @@
                                     <div class="form-group">
                                         <label for="celular" class="control-label mb-1">Celular</label>
                                         <input id="celular" type="text" class="form-control" formControlName="vCelular"
-                                            [(ngModel)]="parcero.celular">
+                                            [(ngModel)]="parcero.celular" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vCelular"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -134,7 +138,7 @@
                                     <div class="form-group">
                                         <label for="pais" class="control-label mb-1">Pais</label>
                                         <select id="pais" class="form-control" formControlName="vPais"
-                                            [(ngModel)]="parcero.pais">
+                                            [(ngModel)]="parcero.pais" [attr.disabled]="modoLectura?true:null">
                                             <option value="{{pais.codigo}}" *ngFor="let pais of paises">{{pais.valor}}
                                             </option>
                                         </select>
@@ -145,7 +149,7 @@
                                     <div class="form-group">
                                         <label for="ciudad" class="control-label mb-1">Cuidad</label>
                                         <input id="ciudad" type="text" class="form-control" formControlName="vCiudad"
-                                            [(ngModel)]="parcero.ciudad">
+                                            [(ngModel)]="parcero.ciudad" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vCiudad"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -153,7 +157,7 @@
                                     <div class="form-group">
                                         <label for="calle" class="control-label mb-1">Calle</label>
                                         <input id="calle" type="text" class="form-control" formControlName="vCalle"
-                                            [(ngModel)]="parcero.calle">
+                                            [(ngModel)]="parcero.calle" [readonly]="modoLectura">
                                         <mensaje-error-input [control]="f.vCalle"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -162,9 +166,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="comentario" class="control-label mb-1">Comentario</label>
-                                        <textarea id="comentario" placeholder="Comentario..."
-                                            class="form-control" formControlName="vComentario"
-                                            [(ngModel)]="parcero.comentario"></textarea>
+                                        <textarea id="comentario" placeholder="Comentario..." class="form-control"
+                                            formControlName="vComentario" [(ngModel)]="parcero.comentario"
+                                            [readonly]="modoLectura"></textarea>
                                         <mensaje-error-input [control]="f.vComentario"></mensaje-error-input>
                                     </div>
                                 </div>
@@ -172,7 +176,8 @@
                         </form>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                        <button *ngIf="!modoLectura" type="submit" class="btn btn-primary"
+                            (click)="guardar()">Guardar</button>
                     </div>
                 </div>
             </div>

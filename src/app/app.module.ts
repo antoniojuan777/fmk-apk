@@ -9,11 +9,11 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MensajeErrorInputComponent } from './componente/mensaje-error-input/mensaje-error-input.component';
 import { MensajeComponent } from './componente/mensaje/mensaje.component';
-import { RegistroParceroComponent } from './educador-ce/registro-parcero/registro-parcero.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './componente/loading/loading.component';
 import { DetalleParceroComponent } from './parcero/detalle-parcero/detalle-parcero.component';
 import { ImagenParceroComponent } from './componente/imagen-parcero/imagen-parcero.component';
+import { RegistroParceroComponent } from './parcero/registro-parcero/registro-parcero.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,9 @@ import { ImagenParceroComponent } from './componente/imagen-parcero/imagen-parce
     RouterModule.forRoot([
       { path: '', component: InicioComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'educador-ce/registro-parcero', component: RegistroParceroComponent },
-      { path: 'parcero/detalle-parcero', component: DetalleParceroComponent }
+      { path: 'parcero/registro-parcero', component: RegistroParceroComponent },
+      { path: 'parcero/registro-parcero/:parcero_id', component: RegistroParceroComponent },
+      { path: 'parcero/detalle-parcero/:parcero_id', component: DetalleParceroComponent }
     ])
   ],
   providers: [],
