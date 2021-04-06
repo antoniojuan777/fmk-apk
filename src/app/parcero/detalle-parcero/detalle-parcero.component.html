@@ -12,13 +12,62 @@
                         <hr>
                         <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
                         <div class="media">
-                            <a href="#">
-                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/icon/avatar-01.jpg">
-                            </a>
+                            <imagen-parcero [parcero]="parcero" [tipo]="'big'"></imagen-parcero>
                             <div class="media-body">
-                                <h2 class="text-light display-6">{{parcero.nombres}} {{parcero.apellidos}}</h2>
-                                <p>Project Manager</p>
+                                <h2 class="display-6">{{parcero.nombres}} {{parcero.apellidos}}</h2>
+                                <p>Cel: {{parcero.celular}}</p>
+                                <p>Edcuador CE: {{educador?.name}}</p>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="default-tab">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-primercontactacto-tab" data-toggle="tab" href="#nav-primercontactacto" role="tab" aria-controls="nav-primercontactacto"
+                                     aria-selected="true">Primer Contacto</a>
+                                    <a class="nav-item nav-link" id="nav-cbtriesgos-tab" data-toggle="tab" href="#nav-cbtriesgos" role="tab" aria-controls="nav-cbtriesgos"
+                                     aria-selected="false">CBT Riesgos</a>
+                                    <a class="nav-item nav-link" id="nav-sesiones-tab" data-toggle="tab" href="#nav-sesiones" role="tab" aria-controls="nav-sesiones"
+                                     aria-selected="false">Sesiones</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-primercontactacto" role="tabpanel" aria-labelledby="nav-primercontactacto-tab">
+                                    <div class="table-responsive table--no-card m-b-30">
+                                        <table class="table table-borderless table-striped table-earning">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 40px;"><i class="fa fa-male"></i></td>
+                                                    <td>Datos Personales</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-cbtriesgos" role="tabpanel" aria-labelledby="nav-cbtriesgos-tab">
+                                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+                                        dreamcatcher synth. Cosby sweater eu banh mi, irure terry richardson ex sd. Alip placeat salvia cillum iphone.
+                                        Seitan alip s cardigan american apparel, butcher voluptate nisi .</p>
+                                </div>
+                                <div class="tab-pane fade" id="nav-sesiones" role="tabpanel" aria-labelledby="nav-sesiones-tab">
+                                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+                                        dreamcatcher synth. Cosby sweater eu banh mi, irure terry richardson ex sd. Alip placeat salvia cillum iphone.
+                                        Seitan alip s cardigan american apparel, butcher voluptate nisi .</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

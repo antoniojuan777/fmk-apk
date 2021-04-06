@@ -13,6 +13,7 @@ import { RegistroParceroComponent } from './educador-ce/registro-parcero/registr
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './componente/loading/loading.component';
 import { DetalleParceroComponent } from './parcero/detalle-parcero/detalle-parcero.component';
+import { ImagenParceroComponent } from './componente/imagen-parcero/imagen-parcero.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DetalleParceroComponent } from './parcero/detalle-parcero/detalle-parce
     MensajeComponent,
     RegistroParceroComponent,
     LoadingComponent,
-    DetalleParceroComponent
+    DetalleParceroComponent,
+    ImagenParceroComponent
   ],
   imports: [
     BrowserModule,

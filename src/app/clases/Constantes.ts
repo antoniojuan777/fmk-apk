@@ -11,3 +11,7 @@ export const IdRol = {
     SUPERADMINISTRADOR: 1,
     EDUCADOR_CE: 2
 }
+export const Genero = {
+    HOMBRE: 'H',
+    MUJER: 'M'
+}
