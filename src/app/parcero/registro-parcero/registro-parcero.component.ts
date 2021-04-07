@@ -58,7 +58,9 @@ export class RegistroParceroComponent implements OnInit {
     vPais: ['', []],
     vCiudad: ['', []],
     vCalle: ['', []],
-    vComentario: ['', []],
+    vComentario: ['', [
+      Validators.required
+    ]],
   });
   modoLectura: boolean = true;
 

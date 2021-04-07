@@ -14,6 +14,7 @@ import { LoadingComponent } from './componente/loading/loading.component';
 import { DetalleParceroComponent } from './parcero/detalle-parcero/detalle-parcero.component';
 import { ImagenParceroComponent } from './componente/imagen-parcero/imagen-parcero.component';
 import { RegistroParceroComponent } from './parcero/registro-parcero/registro-parcero.component';
+import { RegistroFuenteComponent } from './parcero/registro-fuente/registro-fuente.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegistroParceroComponent } from './parcero/registro-parcero/registro-pa
     RegistroParceroComponent,
     LoadingComponent,
     DetalleParceroComponent,
-    ImagenParceroComponent
+    ImagenParceroComponent,
+    RegistroFuenteComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { RegistroParceroComponent } from './parcero/registro-parcero/registro-pa
       { path: 'login', component: LoginComponent },
       { path: 'parcero/registro-parcero', component: RegistroParceroComponent },
       { path: 'parcero/registro-parcero/:parcero_id', component: RegistroParceroComponent },
-      { path: 'parcero/detalle-parcero/:parcero_id', component: DetalleParceroComponent }
+      { path: 'parcero/detalle-parcero/:parcero_id', component: DetalleParceroComponent },
+      { path: 'parcero/registro-fuente/:parcero_id', component: RegistroFuenteComponent }
     ])
   ],
   providers: [],

@@ -17,7 +17,7 @@
                                 <h2 class="display-6">{{parcero.nombres}} {{parcero.apellidos}}</h2>
                                 <h3 *ngIf="parcero.apodo">"{{parcero.apodo}}"</h3>
                                 <p>Cel: {{parcero.celular}}</p>
-                                <p *ngIf="educador">Edcuador CE: {{educador.name}}</p>
+                                <p *ngIf="educador">Educador CE: {{educador.name}}</p>
                             </div>
                         </div>
                         <hr>
@@ -54,6 +54,29 @@
                                                             <button class="item" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"
                                                                 *ngIf="tieneAccesoRegistrarEducadorCE()">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr (click)="irFuente()">
+                                                    <td style="width: 40px;"><i class="fa fa-user-secret"></i></td>
+                                                    <td>Fuente</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVerFuente()">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrarFuente()">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditarFuente()">
                                                                 <i class="fa fa-pencil"></i>
                                                             </button>
                                                         </div>

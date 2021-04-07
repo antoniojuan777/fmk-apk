@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Accion, IdRol, TipoMensaje } from 'src/app/clases/Constantes';
+import { Fuente } from 'src/app/clases/Fuente';
 import { Mensaje } from 'src/app/clases/Mensaje';
 import { Parcero } from 'src/app/clases/Parcero';
 import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/detalle-parcero/ResponseDatosIniciales';
@@ -21,6 +22,7 @@ export class DetalleParceroComponent implements OnInit {
 
   parcero: Parcero;
   educador: User;
+  fuente: Fuente;
 
   constructor(
     private param: ParamService,
@@ -51,6 +53,8 @@ export class DetalleParceroComponent implements OnInit {
       }
       this.educador = resDatosIniciales.educador;
       this.parcero = resDatosIniciales.parcero;
+      this.fuente = resDatosIniciales.fuente;
+      console.log('resDatosIniciales',resDatosIniciales);
       this.cargando = false;
     });
 
@@ -62,5 +66,21 @@ export class DetalleParceroComponent implements OnInit {
 
   irParcero() {
     this.router.navigate(['/parcero/registro-parcero', this.parcero.id]);
+  }
+
+  irFuente(){
+    this.router.navigate(['/parcero/registro-fuente', this.parcero.id]);
+  }
+
+  botonVerFuente(){
+    return !this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE) && this.fuente;
+  }
+
+  botonRegistrarFuente(){
+    return this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE) && !this.fuente;
+  }
+
+  botonEditarFuente(){
+    return this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE) && this.fuente;
   }
 }
