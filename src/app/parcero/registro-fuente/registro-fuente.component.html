@@ -21,6 +21,66 @@
                                         <mensaje-error-input [control]="f.vNombresApellidos"></mensaje-error-input>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="celular" class="control-label mb-1">Celular</label>
+                                        <input id="celular" type="text" class="form-control" formControlName="vCelular"
+                                            [(ngModel)]="fuente.celular" [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vCelular"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="edad" class="control-label mb-1">Edad</label>
+                                        <input id="edad" type="text" class="form-control" formControlName="vEdad"
+                                            [(ngModel)]="fuente.edad" [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vEdad"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="control-label mb-1">Género</label>
+                                        </div>
+                                        <div class="form-check-inline form-check">
+                                            <label for="hombre" class="form-check-label ">
+                                                <input type="radio" id="hombre" value="H" class="form-check-input"
+                                                    formControlName="vGenero" [(ngModel)]="fuente.genero"
+                                                    [attr.disabled]="modoLectura?true:null">Hombre
+                                            </label>
+                                            <label for="mujer" class="form-check-label ">
+                                                <input type="radio" id="mujer" value="M" class="form-check-input"
+                                                    formControlName="vGenero" [(ngModel)]="fuente.genero"
+                                                    [attr.disabled]="modoLectura?true:null">Mujer
+                                            </label>
+                                        </div>
+                                        <mensaje-error-input [control]="f.vGenero"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="medio_conocimiento_org" class="control-label mb-1">¿Como supo de la organización?</label>
+                                        <select id="medio_conocimiento_org" class="form-control" formControlName="vMedioConocimientoOrg"
+                                            [(ngModel)]="fuente.medio_conocimiento_org" [attr.disabled]="modoLectura?true:null">
+                                            <option value="{{medioConocimientoOrg.codigo}}" *ngFor="let medioConocimientoOrg of mediosConocimientosOrgs">{{medioConocimientoOrg.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vMedioConocimientoOrg"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="relacion_paciente" class="control-label mb-1">Relación con el paciente</label>
+                                        <select id="relacion_paciente" class="form-control" formControlName="vRelacionPaciente"
+                                            [(ngModel)]="fuente.relacion_paciente" [attr.disabled]="modoLectura?true:null">
+                                            <option value="{{relacionPaciente.codigo}}" *ngFor="let relacionPaciente of relacionesPacientes">{{relacionPaciente.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vRelacionPaciente"></mensaje-error-input>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

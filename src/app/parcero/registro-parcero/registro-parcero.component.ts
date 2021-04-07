@@ -110,21 +110,21 @@ export class RegistroParceroComponent implements OnInit {
     this.mensaje = null;
     if (this.util.validar(this.parceroForm)) {
       this.cargando = true;
-      let resDatosIniciales: ResponseRegistroParcero;
+      let resRegistroParcero: ResponseRegistroParcero;
       let reqRegistrarParcero: { parcero: Parcero } = { parcero: this.parcero }
       //console.log('reqParceroDatosIniciales', reqRegistrarParcero);
       try {
-        resDatosIniciales = await this.fmk.postGlobal<ResponseRegistroParcero>('/registro-parcero/registrar', reqRegistrarParcero).toPromise();
+        resRegistroParcero = await this.fmk.postGlobal<ResponseRegistroParcero>('/registro-parcero/registrar', reqRegistrarParcero).toPromise();
       } catch (error) {
         this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
         this.cargando = false;
         return;
       }
-      if (resDatosIniciales.ok) {
-        this.param.set('mensaje', new Mensaje(resDatosIniciales.mensaje, TipoMensaje.EXITO));
-        this.router.navigate(['/parcero/detalle-parcero', resDatosIniciales.parcero.id]);
+      if (resRegistroParcero.ok) {
+        this.param.set('mensaje', new Mensaje(resRegistroParcero.mensaje, TipoMensaje.EXITO));
+        this.router.navigate(['/parcero/detalle-parcero', resRegistroParcero.parcero.id]);
       } else {
-        this.mensaje = new Mensaje(resDatosIniciales.mensaje, TipoMensaje.ALERTA);
+        this.mensaje = new Mensaje(resRegistroParcero.mensaje, TipoMensaje.ALERTA);
       }
       this.cargando = false;
     }
