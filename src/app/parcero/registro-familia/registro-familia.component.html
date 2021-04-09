@@ -14,7 +14,220 @@
                         <form [formGroup]="familiaForm">
                             <div class="row">
                                 <div class="col-md-4">
-                                    
+                                    <div class="form-group">
+                                        <label for="estado_familiar" class="control-label mb-1">Estado Familiar</label>
+                                        <select id="estado_familiar" class="form-control"
+                                            formControlName="vEstadoFamiliar" [(ngModel)]="familia.estado_familiar"
+                                            [attr.disabled]="modoLectura?true:null"
+                                            (change)="cambiarEstadoFamiliar($event)">
+                                            <option value="{{estadoFamiliar.codigo}}"
+                                                *ngFor="let estadoFamiliar of estadosFamiliares">
+                                                {{estadoFamiliar.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vEstadoFamiliar"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="numero_matrimonio" class="control-label mb-1">Matrimonio</label>
+                                        <select id="numero_matrimonio" class="form-control"
+                                            formControlName="vNumeroMatrimonio" [(ngModel)]="familia.numero_matrimonio"
+                                            [attr.disabled]="modoLectura || !habilitarMatrimonio?true:null">
+                                            <option value="{{numeroMatrimonio.codigo}}"
+                                                *ngFor="let numeroMatrimonio of numerosMatrimonios">
+                                                {{numeroMatrimonio.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vNumeroMatrimonio"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="numero_esposo" class="control-label mb-1">Esposo(a)</label>
+                                        <select id="numero_esposo" class="form-control" formControlName="vNumeroEsposo"
+                                            [(ngModel)]="familia.numero_esposo"
+                                            [attr.disabled]="modoLectura || !habilitarEsposo?true:null">
+                                            <option value="{{numeroEsposo.codigo}}"
+                                                *ngFor="let numeroEsposo of numerosEsposos">
+                                                {{numeroEsposo.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vNumeroEsposo"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="estructura_familiar" class="control-label mb-1">Estructura
+                                            Familiar</label>
+                                        <select id="estructura_familiar" class="form-control"
+                                            formControlName="vEstructuraFamiliar"
+                                            [(ngModel)]="familia.estructura_familiar"
+                                            [attr.disabled]="modoLectura?true:null">
+                                            <option value="{{estructuraFamiliar.codigo}}"
+                                                *ngFor="let estructuraFamiliar of estructurasFamiliares">
+                                                {{estructuraFamiliar.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vEstructuraFamiliar"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="escolaridad" class="control-label mb-1">Escolaridad</label>
+                                        <select id="escolaridad" class="form-control" formControlName="vEscolaridad"
+                                            [(ngModel)]="familia.escolaridad" [attr.disabled]="modoLectura?true:null">
+                                            <option value="{{escolaridad.codigo}}"
+                                                *ngFor="let escolaridad of escolaridades">
+                                                {{escolaridad.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="f.vEscolaridad"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="religion" class="control-label mb-1">Religión</label>
+                                        <input id="religion" type="text" class="form-control"
+                                            formControlName="vReligion" [(ngModel)]="familia.religion"
+                                            [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vReligion"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="hijos_varones" class="control-label mb-1">Número hijos
+                                            (varones)</label>
+                                        <input id="hijos_varones" type="text" class="form-control"
+                                            formControlName="vHijosVarones" [(ngModel)]="familia.hijos_varones"
+                                            [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vHijosVarones"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="hijas_mujeres" class="control-label mb-1">Número hijas
+                                            (mujeres)</label>
+                                        <input id="hijas_mujeres" type="text" class="form-control"
+                                            formControlName="vHijasMujeres" [(ngModel)]="familia.hijas_mujeres"
+                                            [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vHijasMujeres"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="nombres_apellidos_apoyo" class="control-label mb-1">Persona apoyo
+                                            (nombres y apellidos)</label>
+                                        <input id="nombres_apellidos_apoyo" type="text" class="form-control"
+                                            formControlName="vNombresApellidosApoyo"
+                                            [(ngModel)]="familia.nombres_apellidos_apoyo" [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vNombresApellidosApoyo"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="celular_apoyo" class="control-label mb-1">Persona apoyo
+                                            (celular)</label>
+                                        <input id="celular_apoyo" type="text" class="form-control"
+                                            formControlName="vCelularApoyo" [(ngModel)]="familia.celular_apoyo"
+                                            [readonly]="modoLectura">
+                                        <mensaje-error-input [control]="f.vCelularApoyo"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Conocimiento</label>
+                                </div>
+                                <div class="col col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sabe_escribir" class="form-check-label">
+                                                <input type="checkbox" id="sabe_escribir"
+                                                    [checked]="familia.sabe_escribir"
+                                                    (change)="familia.sabe_escribir = !familia.sabe_escribir"
+                                                    class="form-check-input">Sabe escribir
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="sabe_leer" class="form-check-label">
+                                                <input type="checkbox" id="sabe_leer"
+                                                    [checked]="familia.sabe_leer"
+                                                    (change)="familia.sabe_leer = !familia.sabe_leer"
+                                                    class="form-check-input">Sabe leer
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="sabe_sumar" class="form-check-label">
+                                                <input type="checkbox" id="sabe_sumar"
+                                                    [checked]="familia.sabe_sumar"
+                                                    (change)="familia.sabe_sumar = !familia.sabe_sumar"
+                                                    class="form-check-input">Sabe sumar
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sabe_restar" class="form-check-label">
+                                                <input type="checkbox" id="sabe_restar"
+                                                    [checked]="familia.sabe_restar"
+                                                    (change)="familia.sabe_restar = !familia.sabe_restar"
+                                                    class="form-check-input">Sabe restar
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="sabe_multiplicar" class="form-check-label">
+                                                <input type="checkbox" id="sabe_multiplicar"
+                                                    [checked]="familia.sabe_multiplicar"
+                                                    (change)="familia.sabe_multiplicar = !familia.sabe_multiplicar"
+                                                    class="form-check-input">Sabe multiplicar
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="sabe_dividir" class="form-check-label">
+                                                <input type="checkbox" id="sabe_dividir"
+                                                    [checked]="familia.sabe_dividir"
+                                                    (change)="familia.sabe_dividir = !familia.sabe_dividir"
+                                                    class="form-check-input">Sabe dividir
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sabe_calcular_promedios" class="form-check-label">
+                                                <input type="checkbox" id="sabe_calcular_promedios"
+                                                    [checked]="familia.sabe_calcular_promedios"
+                                                    (change)="familia.sabe_calcular_promedios = !familia.sabe_calcular_promedios"
+                                                    class="form-check-input">Sabe calcular promedios
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="sabe_calcular_porcentajes" class="form-check-label">
+                                                <input type="checkbox" id="sabe_calcular_porcentajes"
+                                                    [checked]="familia.sabe_calcular_porcentajes"
+                                                    (change)="familia.sabe_calcular_porcentajes = !familia.sabe_calcular_porcentajes"
+                                                    class="form-check-input">Sabe calcular porcentajes
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="usa_computadora" class="form-check-label">
+                                                <input type="checkbox" id="usa_computadora"
+                                                    [checked]="familia.usa_computadora"
+                                                    (change)="familia.usa_computadora = !familia.usa_computadora"
+                                                    class="form-check-input">Usa la computadora
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>

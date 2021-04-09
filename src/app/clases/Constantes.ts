@@ -15,9 +15,13 @@ export const Genero = {
     HOMBRE: 'H',
     MUJER: 'M'
 }
-export const Accion={
-    REGISTRA:1,
-    RECUPERA:2,
-    IMPRIME:3,
-    ELIMINA:4
+export const Accion = {
+    REGISTRA: 1,
+    RECUPERA: 2,
+    IMPRIME: 3,
+    ELIMINA: 4
+}
+export const EstadoFamiliar = {
+    CASADO: 'FAM-002',
+    UNION_LIBRE: 'FAM-007'
 }
