@@ -1,3 +1,4 @@
+import { Familia } from "src/app/clases/Familia";
 import { Fuente } from "src/app/clases/Fuente";
 import { Parcero } from "../../../Parcero";
 import { User } from "../../../User";
@@ -9,7 +10,8 @@ export class ResponseDatosIniciales extends ResponseGlobal {
         public mensaje: string,
         public parcero: Parcero,
         public educador: User,
-        public fuente: Fuente
+        public fuente: Fuente,
+        public familia: Familia
     ) {
         super(ok, mensaje);
     }
