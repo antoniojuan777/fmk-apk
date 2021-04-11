@@ -84,7 +84,7 @@
                                                 </tr>
                                                 <tr (click)="irFamilia()">
                                                     <td style="width: 40px;"><i class="fa fa-users"></i></td>
-                                                    <td>Familia</td>
+                                                    <td>Familia / Conocimiento</td>
                                                     <td class="text-right">
                                                         <div class="table-data-feature">
                                                             <button class="item" data-toggle="tooltip"
@@ -100,6 +100,52 @@
                                                             <button class="item" data-toggle="tooltip"
                                                                 data-placement="top" title="Modificar"
                                                                 *ngIf="botonEditar() && familia">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr (click)="irEmpleo()">
+                                                    <td style="width: 40px;"><i class="fa fa-briefcase"></i></td>
+                                                    <td>Empleo</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVer() && empleo">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrar() && !empleo">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditar() && empleo">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr (click)="irCondiciones()">
+                                                    <td style="width: 40px;"><i class="fa fa-align-justify"></i></td>
+                                                    <td>Condiciones al primer contacto</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVer() && condicion">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrar() && !condicion">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditar() && condicion">
                                                                 <i class="fa fa-pencil"></i>
                                                             </button>
                                                         </div>

@@ -1,0 +1,498 @@
+<loading *ngIf="cargando"></loading>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Registro condiciones al primer contacto</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Condiciones al primer contacto</h3>
+                        </div>
+                        <hr>
+                        <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
+                        <form [formGroup]="condicionForm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sustancias_alcohol" class="form-check-label">
+                                                <input type="checkbox" id="sustancias_alcohol"
+                                                    [checked]="condicion.sustancias_alcohol"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.sustancias_alcohol = !condicion.sustancias_alcohol"
+                                                    class="form-check-input">Sustancias / alcohol
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="conductas_antisociales" class="form-check-label">
+                                                <input type="checkbox" id="conductas_antisociales"
+                                                    [checked]="condicion.conductas_antisociales"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.conductas_antisociales = !condicion.conductas_antisociales"
+                                                    class="form-check-input">Conductas antisociales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="psiquiatricas" class="form-check-label">
+                                                <input type="checkbox" id="psiquiatricas"
+                                                    [checked]="condicion.psiquiatricas"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.psiquiatricas = !condicion.psiquiatricas"
+                                                    class="form-check-input">Psiquiatricas
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="conductuales" class="form-check-label">
+                                                <input type="checkbox" id="conductuales"
+                                                    [checked]="condicion.conductuales"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.conductuales = !condicion.conductuales"
+                                                    class="form-check-input">Conductuales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="relacionales" class="form-check-label">
+                                                <input type="checkbox" id="relacionales"
+                                                    [checked]="condicion.relacionales"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.relacionales = !condicion.relacionales"
+                                                    class="form-check-input">Relacionales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="violencia_familiar" class="form-check-label">
+                                                <input type="checkbox" id="violencia_familiar"
+                                                    [checked]="condicion.violencia_familiar"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.violencia_familiar = !condicion.violencia_familiar"
+                                                    class="form-check-input">Violencia familiar
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="violacion" class="form-check-label">
+                                                <input type="checkbox" id="violacion"
+                                                    [checked]="condicion.violacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.violacion = !condicion.violacion"
+                                                    class="form-check-input">Violación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="trabajo_sexual" class="form-check-label">
+                                                <input type="checkbox" id="trabajo_sexual"
+                                                    [checked]="condicion.trabajo_sexual"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.trabajo_sexual = !condicion.trabajo_sexual"
+                                                    class="form-check-input">Trabajo sexual
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="legal" class="form-check-label">
+                                                <input type="checkbox" id="legal"
+                                                    [checked]="condicion.legal"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.legal = !condicion.legal"
+                                                    class="form-check-input">Legal
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="embarazo_parto" class="form-check-label">
+                                                <input type="checkbox" id="embarazo_parto"
+                                                    [checked]="condicion.embarazo_parto"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.embarazo_parto = !condicion.embarazo_parto"
+                                                    class="form-check-input">Embarazo / Parto
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="enfermedades" class="form-check-label">
+                                                <input type="checkbox" id="enfermedades"
+                                                    [checked]="condicion.enfermedades"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.enfermedades = !condicion.enfermedades"
+                                                    class="form-check-input">Enfermedades
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="pobreza_extrema" class="form-check-label">
+                                                <input type="checkbox" id="pobreza_extrema"
+                                                    [checked]="condicion.pobreza_extrema"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.pobreza_extrema = !condicion.pobreza_extrema"
+                                                    class="form-check-input">Pobreza extrema
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="vida_calle" class="form-check-label">
+                                                <input type="checkbox" id="vida_calle"
+                                                    [checked]="condicion.vida_calle"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.vida_calle = !condicion.vida_calle"
+                                                    class="form-check-input">Vida de la calle
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="apoyo_economico" class="form-check-label">
+                                                <input type="checkbox" id="apoyo_economico"
+                                                    [checked]="condicion.apoyo_economico"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.apoyo_economico = !condicion.apoyo_economico"
+                                                    class="form-check-input">Apoyo económico
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="escolares" class="form-check-label">
+                                                <input type="checkbox" id="escolares"
+                                                    [checked]="condicion.escolares"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.escolares = !condicion.escolares"
+                                                    class="form-check-input">Escolares
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="exclusion_grave" class="form-check-label">
+                                                <input type="checkbox" id="exclusion_grave"
+                                                    [checked]="condicion.exclusion_grave"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.exclusion_grave = !condicion.exclusion_grave"
+                                                    class="form-check-input">Exclusión grave
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="violencia_intracom" class="form-check-label">
+                                                <input type="checkbox" id="violencia_intracom"
+                                                    [checked]="condicion.violencia_intracom"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.violencia_intracom = !condicion.violencia_intracom"
+                                                    class="form-check-input">Violencia intracomunitaria
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="redes_interinst" class="form-check-label">
+                                                <input type="checkbox" id="redes_interinst"
+                                                    [checked]="condicion.redes_interinst"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.redes_interinst = !condicion.redes_interinst"
+                                                    class="form-check-input">Redes interinstitucionales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="crisis_psicologica" class="form-check-label">
+                                                <input type="checkbox" id="crisis_psicologica"
+                                                    [checked]="condicion.crisis_psicologica"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.crisis_psicologica = !condicion.crisis_psicologica"
+                                                    class="form-check-input">Crisis psicológica
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="capacitacion_formacion" class="form-check-label">
+                                                <input type="checkbox" id="capacitacion_formacion"
+                                                    [checked]="condicion.capacitacion_formacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.capacitacion_formacion = !condicion.capacitacion_formacion"
+                                                    class="form-check-input">Capacitación y formación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="oganizacion_planeacion" class="form-check-label">
+                                                <input type="checkbox" id="oganizacion_planeacion"
+                                                    [checked]="condicion.oganizacion_planeacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.oganizacion_planeacion = !condicion.oganizacion_planeacion"
+                                                    class="form-check-input">Organización y planeación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="hiv" class="form-check-label">
+                                                <input type="checkbox" id="hiv"
+                                                    [checked]="condicion.hiv"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.hiv = !condicion.hiv"
+                                                    class="form-check-input">HIV
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="ets" class="form-check-label">
+                                                <input type="checkbox" id="ets"
+                                                    [checked]="condicion.ets"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.ets = !condicion.ets"
+                                                    class="form-check-input">ETS
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="aids" class="form-check-label">
+                                                <input type="checkbox" id="aids"
+                                                    [checked]="condicion.aids"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.aids = !condicion.aids"
+                                                    class="form-check-input">AIDS
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sin_trabajo" class="form-check-label">
+                                                <input type="checkbox" id="sin_trabajo"
+                                                    [checked]="condicion.sin_trabajo"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.sin_trabajo = !condicion.sin_trabajo"
+                                                    class="form-check-input">Sin trabajo
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="tb" class="form-check-label">
+                                                <input type="checkbox" id="tb"
+                                                    [checked]="condicion.tb"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.tb = !condicion.tb"
+                                                    class="form-check-input">TB
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="problemas_familiares" class="form-check-label">
+                                                <input type="checkbox" id="problemas_familiares"
+                                                    [checked]="condicion.problemas_familiares"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.problemas_familiares = !condicion.problemas_familiares"
+                                                    class="form-check-input">Problemas familiares
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="tep_lt" class="form-check-label">
+                                                <input type="checkbox" id="tep_lt"
+                                                    [checked]="condicion.tep_lt"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.tep_lt = !condicion.tep_lt"
+                                                    class="form-check-input">TEP-LT
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="tep_st" class="form-check-label">
+                                                <input type="checkbox" id="tep_st"
+                                                    [checked]="condicion.tep_st"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.tep_st = !condicion.tep_st"
+                                                    class="form-check-input">TEP-ST
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="problemas_sexuales" class="form-check-label">
+                                                <input type="checkbox" id="problemas_sexuales"
+                                                    [checked]="condicion.problemas_sexuales"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.problemas_sexuales = !condicion.problemas_sexuales"
+                                                    class="form-check-input">Problemas sexuales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="violacion_ninio" class="form-check-label">
+                                                <input type="checkbox" id="violacion_ninio"
+                                                    [checked]="condicion.violacion_ninio"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.violacion_ninio = !condicion.violacion_ninio"
+                                                    class="form-check-input">Violación de niño
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otras_depedencias" class="form-check-label">
+                                                <input type="checkbox" id="otras_depedencias"
+                                                    [checked]="condicion.otras_depedencias"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.otras_depedencias = !condicion.otras_depedencias"
+                                                    class="form-check-input">Otras dependencias
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="drogas_intravena" class="form-check-label">
+                                                <input type="checkbox" id="drogas_intravena"
+                                                    [checked]="condicion.drogas_intravena"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.drogas_intravena = !condicion.drogas_intravena"
+                                                    class="form-check-input">Uso de drogas por intravena
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otros" class="form-check-label">
+                                                <input type="checkbox" id="otros"
+                                                    [checked]="condicion.otros"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.otros = !condicion.otros"
+                                                    class="form-check-input">Otros
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="hepatitis" class="form-check-label">
+                                                <input type="checkbox" id="hepatitis"
+                                                    [checked]="condicion.hepatitis"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="condicion.hepatitis = !condicion.hepatitis"
+                                                    class="form-check-input">Hepatitis
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button *ngIf="!modoLectura" type="submit" class="btn btn-primary"
+                            (click)="guardar()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

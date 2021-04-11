@@ -1,3 +1,5 @@
+import { Condicion } from "src/app/clases/Condicion";
+import { Empleo } from "src/app/clases/Empleo";
 import { Familia } from "src/app/clases/Familia";
 import { Fuente } from "src/app/clases/Fuente";
 import { Parcero } from "../../../Parcero";
@@ -11,7 +13,9 @@ export class ResponseDatosIniciales extends ResponseGlobal {
         public parcero: Parcero,
         public educador: User,
         public fuente: Fuente,
-        public familia: Familia
+        public familia: Familia,
+        public empleo: Empleo,
+        public condicion: Condicion
     ) {
         super(ok, mensaje);
     }

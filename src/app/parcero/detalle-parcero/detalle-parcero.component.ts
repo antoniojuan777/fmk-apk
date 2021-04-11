@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Condicion } from 'src/app/clases/Condicion';
 import { Accion, IdRol, TipoMensaje } from 'src/app/clases/Constantes';
+import { Empleo } from 'src/app/clases/Empleo';
 import { Familia } from 'src/app/clases/Familia';
 import { Fuente } from 'src/app/clases/Fuente';
 import { Mensaje } from 'src/app/clases/Mensaje';
@@ -25,6 +27,8 @@ export class DetalleParceroComponent implements OnInit {
   educador: User;
   fuente: Fuente;
   familia: Familia;
+  empleo: Empleo;
+  condicion: Condicion;
 
   constructor(
     private param: ParamService,
@@ -56,7 +60,9 @@ export class DetalleParceroComponent implements OnInit {
       this.educador = resDatosIniciales.educador;
       this.parcero = resDatosIniciales.parcero;
       this.fuente = resDatosIniciales.fuente;
-      this.familia= resDatosIniciales.familia;
+      this.familia = resDatosIniciales.familia;
+      this.empleo = resDatosIniciales.empleo;
+      this.condicion = resDatosIniciales.condicion;
       this.cargando = false;
     });
 
@@ -70,23 +76,31 @@ export class DetalleParceroComponent implements OnInit {
     this.router.navigate(['/parcero/registro-parcero', this.parcero.id]);
   }
 
-  irFuente(){
+  irFuente() {
     this.router.navigate(['/parcero/registro-fuente', this.parcero.id]);
   }
 
-  irFamilia(){
+  irFamilia() {
     this.router.navigate(['/parcero/registro-familia', this.parcero.id]);
   }
 
-  botonVer(){
+  irEmpleo() {
+    this.router.navigate(['/parcero/registro-empleo', this.parcero.id]);
+  }
+
+  irCondiciones() {
+    this.router.navigate(['/parcero/registro-condicion', this.parcero.id]);
+  }
+
+  botonVer() {
     return !this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE);
   }
 
-  botonRegistrar(){
+  botonRegistrar() {
     return this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE);
   }
 
-  botonEditar(){
+  botonEditar() {
     return this.sesion.tieneAcceso(Accion.REGISTRA, IdRol.EDUCADOR_CE);
   }
 }
