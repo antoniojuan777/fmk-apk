@@ -7,6 +7,7 @@ import { Familia } from 'src/app/clases/Familia';
 import { Fuente } from 'src/app/clases/Fuente';
 import { Mensaje } from 'src/app/clases/Mensaje';
 import { Parcero } from 'src/app/clases/Parcero';
+import { Peticion } from 'src/app/clases/Peticion';
 import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/detalle-parcero/ResponseDatosIniciales';
 import { User } from 'src/app/clases/User';
 import { FmkService } from 'src/app/servicio/fmk.service';
@@ -29,6 +30,7 @@ export class DetalleParceroComponent implements OnInit {
   familia: Familia;
   empleo: Empleo;
   condicion: Condicion;
+  peticion: Peticion;
 
   constructor(
     private param: ParamService,
@@ -63,6 +65,7 @@ export class DetalleParceroComponent implements OnInit {
       this.familia = resDatosIniciales.familia;
       this.empleo = resDatosIniciales.empleo;
       this.condicion = resDatosIniciales.condicion;
+      this.peticion = resDatosIniciales.peticion;
       this.cargando = false;
     });
 
@@ -90,6 +93,10 @@ export class DetalleParceroComponent implements OnInit {
 
   irCondiciones() {
     this.router.navigate(['/parcero/registro-condicion', this.parcero.id]);
+  }
+
+  irPeticiones() {
+    this.router.navigate(['/parcero/registro-peticion', this.parcero.id]);
   }
 
   botonVer() {

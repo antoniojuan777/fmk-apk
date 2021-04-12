@@ -151,6 +151,29 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <tr (click)="irPeticiones()">
+                                                    <td style="width: 40px;"><i class="fa fa-meh-o"></i></td>
+                                                    <td>Peticiones</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVer() && peticion">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrar() && !peticion">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditar() && peticion">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

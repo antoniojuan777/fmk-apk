@@ -1,5 +1,6 @@
 export class Condicion {
     constructor(
+        public id?: number,
         public sustancias_alcohol?: boolean,
         public conductas_antisociales?: boolean,
         public psiquiatricas?: boolean,

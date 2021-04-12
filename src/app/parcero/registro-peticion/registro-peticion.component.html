@@ -1,0 +1,377 @@
+<loading *ngIf="cargando"></loading>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Registro peticiones</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Peticiones</h3>
+                        </div>
+                        <hr>
+                        <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
+                        <form [formGroup]="peticionForm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="apoyo_economico" class="form-check-label">
+                                                <input type="checkbox" id="apoyo_economico"
+                                                    [checked]="peticion.apoyo_economico"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.apoyo_economico = !peticion.apoyo_economico"
+                                                    class="form-check-input">Apoyo económico
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="atencion_parto" class="form-check-label">
+                                                <input type="checkbox" id="atencion_parto"
+                                                    [checked]="peticion.atencion_parto"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.atencion_parto = !peticion.atencion_parto"
+                                                    class="form-check-input">Atención a parto
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="derivacion_canalizacion" class="form-check-label">
+                                                <input type="checkbox" id="derivacion_canalizacion"
+                                                    [checked]="peticion.derivacion_canalizacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.derivacion_canalizacion = !peticion.derivacion_canalizacion"
+                                                    class="form-check-input">Derivación / canalización
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="cita_coloquio" class="form-check-label">
+                                                <input type="checkbox" id="cita_coloquio"
+                                                    [checked]="peticion.cita_coloquio"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.cita_coloquio = !peticion.cita_coloquio"
+                                                    class="form-check-input">Cita / coloquio
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="consejo_orientacion" class="form-check-label">
+                                                <input type="checkbox" id="consejo_orientacion"
+                                                    [checked]="peticion.consejo_orientacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.consejo_orientacion = !peticion.consejo_orientacion"
+                                                    class="form-check-input">Consejo / orientación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="servicios_legales" class="form-check-label">
+                                                <input type="checkbox" id="servicios_legales"
+                                                    [checked]="peticion.servicios_legales"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.servicios_legales = !peticion.servicios_legales"
+                                                    class="form-check-input">Servicios legales
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="fianzas_conmutas" class="form-check-label">
+                                                <input type="checkbox" id="fianzas_conmutas"
+                                                    [checked]="peticion.fianzas_conmutas"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.fianzas_conmutas = !peticion.fianzas_conmutas"
+                                                    class="form-check-input">Fianzas o conmutas
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="formacion_capacitacion" class="form-check-label">
+                                                <input type="checkbox" id="formacion_capacitacion"
+                                                    [checked]="peticion.formacion_capacitacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.formacion_capacitacion = !peticion.formacion_capacitacion"
+                                                    class="form-check-input">Formación/capacitación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="guarderia_kinder" class="form-check-label">
+                                                <input type="checkbox" id="guarderia_kinder"
+                                                    [checked]="peticion.guarderia_kinder"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.guarderia_kinder = !peticion.guarderia_kinder"
+                                                    class="form-check-input">Guardería / kinder
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="hospitalizacion_medica" class="form-check-label">
+                                                <input type="checkbox" id="hospitalizacion_medica"
+                                                    [checked]="peticion.hospitalizacion_medica"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.hospitalizacion_medica = !peticion.hospitalizacion_medica"
+                                                    class="form-check-input">Hospitalización médica
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="informacion" class="form-check-label">
+                                                <input type="checkbox" id="informacion"
+                                                    [checked]="peticion.informacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.informacion = !peticion.informacion"
+                                                    class="form-check-input">Información
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="integracion_comunitaria" class="form-check-label">
+                                                <input type="checkbox" id="integracion_comunitaria"
+                                                    [checked]="peticion.integracion_comunitaria"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.integracion_comunitaria = !peticion.integracion_comunitaria"
+                                                    class="form-check-input">Integración comunitaria
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="internamiento" class="form-check-label">
+                                                <input type="checkbox" id="internamiento"
+                                                    [checked]="peticion.internamiento"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.internamiento = !peticion.internamiento"
+                                                    class="form-check-input">Internamiento
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="organizacion_planeacion" class="form-check-label">
+                                                <input type="checkbox" id="organizacion_planeacion"
+                                                    [checked]="peticion.organizacion_planeacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.organizacion_planeacion = !peticion.organizacion_planeacion"
+                                                    class="form-check-input">Organización y planeación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="internamiento_forzado" class="form-check-label">
+                                                <input type="checkbox" id="internamiento_forzado"
+                                                    [checked]="peticion.internamiento_forzado"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.internamiento_forzado = !peticion.internamiento_forzado"
+                                                    class="form-check-input">Internamiento forzado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="recuperacion_escolar" class="form-check-label">
+                                                <input type="checkbox" id="recuperacion_escolar"
+                                                    [checked]="peticion.recuperacion_escolar"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.recuperacion_escolar = !peticion.recuperacion_escolar"
+                                                    class="form-check-input">Recuperación escolar
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="sevicio_social" class="form-check-label">
+                                                <input type="checkbox" id="sevicio_social"
+                                                    [checked]="peticion.sevicio_social"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.sevicio_social = !peticion.sevicio_social"
+                                                    class="form-check-input">Servicio social
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="terapia" class="form-check-label">
+                                                <input type="checkbox" id="terapia"
+                                                    [checked]="peticion.terapia"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.terapia = !peticion.terapia"
+                                                    class="form-check-input">Terapia
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="visita_familiar" class="form-check-label">
+                                                <input type="checkbox" id="visita_familiar"
+                                                    [checked]="peticion.visita_familiar"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.visita_familiar = !peticion.visita_familiar"
+                                                    class="form-check-input">Visita familiar
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="examenes_cuidados_med" class="form-check-label">
+                                                <input type="checkbox" id="examenes_cuidados_med"
+                                                    [checked]="peticion.examenes_cuidados_med"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.examenes_cuidados_med = !peticion.examenes_cuidados_med"
+                                                    class="form-check-input">Exámenes / cuidados médicos
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="alimentacion" class="form-check-label">
+                                                <input type="checkbox" id="alimentacion"
+                                                    [checked]="peticion.alimentacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.alimentacion = !peticion.alimentacion"
+                                                    class="form-check-input">Alimentación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="servicio_higiene" class="form-check-label">
+                                                <input type="checkbox" id="servicio_higiene"
+                                                    [checked]="peticion.servicio_higiene"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.servicio_higiene = !peticion.servicio_higiene"
+                                                    class="form-check-input">Servicios de higiene / ropa limpia
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="ocupacion_trabajo" class="form-check-label">
+                                                <input type="checkbox" id="ocupacion_trabajo"
+                                                    [checked]="peticion.ocupacion_trabajo"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.ocupacion_trabajo = !peticion.ocupacion_trabajo"
+                                                    class="form-check-input">Ocupación / trabajo
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="medicamentos" class="form-check-label">
+                                                <input type="checkbox" id="medicamentos"
+                                                    [checked]="peticion.medicamentos"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.medicamentos = !peticion.medicamentos"
+                                                    class="form-check-input">Medicamentos
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="burocratico" class="form-check-label">
+                                                <input type="checkbox" id="burocratico"
+                                                    [checked]="peticion.burocratico"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.burocratico = !peticion.burocratico"
+                                                    class="form-check-input">Burocrático
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otro" class="form-check-label">
+                                                <input type="checkbox" id="otro"
+                                                    [checked]="peticion.otro"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="peticion.otro = !peticion.otro"
+                                                    class="form-check-input">Otro
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button *ngIf="!modoLectura" type="submit" class="btn btn-primary"
+                            (click)="guardar()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

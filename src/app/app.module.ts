@@ -18,6 +18,7 @@ import { RegistroFuenteComponent } from './parcero/registro-fuente/registro-fuen
 import { RegistroFamiliaComponent } from './parcero/registro-familia/registro-familia.component';
 import { EmpleoComponent } from './parcero/empleo/empleo.component';
 import { RegistroCondicionComponent } from './parcero/registro-condicion/registro-condicion.component';
+import { RegistroPeticionComponent } from './parcero/registro-peticion/registro-peticion.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegistroCondicionComponent } from './parcero/registro-condicion/registr
     RegistroFuenteComponent,
     RegistroFamiliaComponent,
     EmpleoComponent,
-    RegistroCondicionComponent
+    RegistroCondicionComponent,
+    RegistroPeticionComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { RegistroCondicionComponent } from './parcero/registro-condicion/registr
       { path: 'parcero/registro-fuente/:parcero_id', component: RegistroFuenteComponent },
       { path: 'parcero/registro-familia/:parcero_id', component: RegistroFamiliaComponent },
       { path: 'parcero/registro-empleo/:parcero_id', component: EmpleoComponent },
-      { path: 'parcero/registro-condicion/:parcero_id', component: RegistroCondicionComponent }
+      { path: 'parcero/registro-condicion/:parcero_id', component: RegistroCondicionComponent },
+      { path: 'parcero/registro-peticion/:parcero_id', component: RegistroPeticionComponent }
     ])
   ],
   providers: [],

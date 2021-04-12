@@ -8,27 +8,27 @@ import { ParamService } from 'src/app/servicio/param.service';
 import { SesionService } from 'src/app/servicio/sesion.service';
 import { UtilService } from 'src/app/servicio/util.service';
 import { ResponseGlobal } from 'src/app/clases/response/ResponseGlobal';
-import { Condicion } from 'src/app/clases/Condicion';
-import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/registro-condicion/ResponseDatosIniciales';
+import { Peticion } from 'src/app/clases/Peticion';
+import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/registro-peticion/ResponseDatosIniciales';
 
 @Component({
-  selector: 'app-registro-condicion',
-  templateUrl: './registro-condicion.component.html',
-  styleUrls: ['./registro-condicion.component.css']
+  selector: 'app-registro-peticion',
+  templateUrl: './registro-peticion.component.html',
+  styleUrls: ['./registro-peticion.component.css']
 })
-export class RegistroCondicionComponent implements OnInit {
+export class RegistroPeticionComponent implements OnInit {
 
   cargando: boolean = false;
   mensaje: Mensaje;
 
-  condicion: Condicion = new Condicion();
+  peticion: Peticion = new Peticion();
 
-  condicionForm: FormGroup = this.fb.group({
+  peticionForm: FormGroup = this.fb.group({
     
   });
   modoLectura: boolean = true;
   
-  get f() { return this.condicionForm.controls; }
+  get f() { return this.peticionForm.controls; }
 
   constructor(
     private fb: FormBuilder,
@@ -50,7 +50,7 @@ export class RegistroCondicionComponent implements OnInit {
       let reqDatosIniciales: { parcero_id: number };
       reqDatosIniciales = { parcero_id: parcero_id };
       try {
-        resDatosIniciales = await this.fmk.postGlobal<ResponseDatosIniciales>('/registro-condicion/datos-iniciales', reqDatosIniciales).toPromise();
+        resDatosIniciales = await this.fmk.postGlobal<ResponseDatosIniciales>('/registro-peticion/datos-iniciales', reqDatosIniciales).toPromise();
       } catch (error) {
         this.fmk.verificarSesion(error);
         this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
@@ -58,30 +58,31 @@ export class RegistroCondicionComponent implements OnInit {
         return;
       }
 
-      this.condicion = resDatosIniciales.condicion;
+      this.peticion = resDatosIniciales.peticion;
 
       this.cargando = false;
     });
   }
+
   async guardar() {
-    console.log('condicion', this.condicion);
+    console.log('peticion', this.peticion);
     this.mensaje = null;
-    if (this.util.validar(this.condicionForm)) {
+    if (this.util.validar(this.peticionForm)) {
       this.cargando = true;
-      let resRegistroCondicion: ResponseGlobal;
-      let reqRegistrarCondicion: { condicion: Condicion } = { condicion: this.condicion }
+      let resRegistroPeticion: ResponseGlobal;
+      let reqRegistrarPeticion: { peticion: Peticion } = { peticion: this.peticion }
       try {
-        resRegistroCondicion = await this.fmk.postGlobal<ResponseGlobal>('/registro-condicion/registrar', reqRegistrarCondicion).toPromise();
+        resRegistroPeticion = await this.fmk.postGlobal<ResponseGlobal>('/registro-peticion/registrar', reqRegistrarPeticion).toPromise();
       } catch (error) {
         this.mensaje = new Mensaje(this.util.getMensajeError(error), TipoMensaje.ERROR);
         this.cargando = false;
         return;
       }
-      if (resRegistroCondicion.ok) {
-        this.param.set('mensaje', new Mensaje(resRegistroCondicion.mensaje, TipoMensaje.EXITO));
-        this.router.navigate(['/parcero/detalle-parcero', this.condicion.parcero_id]);
+      if (resRegistroPeticion.ok) {
+        this.param.set('mensaje', new Mensaje(resRegistroPeticion.mensaje, TipoMensaje.EXITO));
+        this.router.navigate(['/parcero/detalle-parcero', this.peticion.parcero_id]);
       } else {
-        this.mensaje = new Mensaje(resRegistroCondicion.mensaje, TipoMensaje.ALERTA);
+        this.mensaje = new Mensaje(resRegistroPeticion.mensaje, TipoMensaje.ALERTA);
       }
       this.cargando = false;
     }
