@@ -9,6 +9,7 @@ import { Mensaje } from 'src/app/clases/Mensaje';
 import { Parcero } from 'src/app/clases/Parcero';
 import { Peticion } from 'src/app/clases/Peticion';
 import { ResponseDatosIniciales } from 'src/app/clases/response/parcero/detalle-parcero/ResponseDatosIniciales';
+import { Respuesta } from 'src/app/clases/Respuesta';
 import { User } from 'src/app/clases/User';
 import { FmkService } from 'src/app/servicio/fmk.service';
 import { ParamService } from 'src/app/servicio/param.service';
@@ -31,6 +32,7 @@ export class DetalleParceroComponent implements OnInit {
   empleo: Empleo;
   condicion: Condicion;
   peticion: Peticion;
+  respuesta: Respuesta;
 
   constructor(
     private param: ParamService,
@@ -66,6 +68,7 @@ export class DetalleParceroComponent implements OnInit {
       this.empleo = resDatosIniciales.empleo;
       this.condicion = resDatosIniciales.condicion;
       this.peticion = resDatosIniciales.peticion;
+      this.respuesta = resDatosIniciales.respuesta;
       this.cargando = false;
     });
 
@@ -97,6 +100,10 @@ export class DetalleParceroComponent implements OnInit {
 
   irPeticiones() {
     this.router.navigate(['/parcero/registro-peticion', this.parcero.id]);
+  }
+
+  irRespuestaResultado() {
+    this.router.navigate(['/parcero/registro-respuesta-resultado', this.parcero.id]);
   }
 
   botonVer() {

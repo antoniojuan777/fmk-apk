@@ -26,12 +26,15 @@ export class EmpleoComponent implements OnInit {
 
   empleoForm: FormGroup = this.fb.group({
     vEmpleo: ['', []],
+    vDescripcionOtro: ['', []],
   });
   modoLectura: boolean = true;
   empleos: TipoDato[];
   habilitarSinEmpleo: boolean = true;
   habilitarEmpleo: boolean = true;
-  
+  habilitarOtro: boolean = true;
+  habilitarDescripcionOtro: boolean;
+
   get f() { return this.empleoForm.controls; }
 
   constructor(
@@ -64,34 +67,75 @@ export class EmpleoComponent implements OnInit {
       this.empleo = resDatosIniciales.empleo;
       this.empleos = resDatosIniciales.empleos;
       this.cargando = false;
+      this.habilitaciones();
     });
   }
-
-  cambiarNuncaEmpleado(){
-    this.empleo.nunca_empleado = !this.empleo.nunca_empleado;
-    if(this.empleo.nunca_empleado){
+  habilitaciones() {
+    if (this.empleo.nunca_empleado) {
       this.habilitarSinEmpleo = false;
       this.habilitarEmpleo = false;
       this.empleo.sin_empleo = false;
-      this.empleo.empleo = undefined;
+      this.habilitarOtro = false;
+      this.empleo.empleo = null;
+      this.empleo.otro = false;
+      this.habilitarDescripcionOtro = false;
+    }
+    if (this.empleo.sin_empleo) {
+      this.habilitarEmpleo = false;
+      this.habilitarOtro = false;
+      this.empleo.otro = false;
+      this.empleo.empleo = null;
+      this.habilitarDescripcionOtro = false;
+    }
+    if (this.empleo.otro) {
+      this.habilitarDescripcionOtro = true;
+      this.empleo.empleo = null;
+      this.habilitarEmpleo = false;
+      this.empleoForm.controls['vDescripcionOtro'].setValidators([Validators.required]);
+      this.empleoForm.controls['vDescripcionOtro'].updateValueAndValidity();
+    }
+  }
+
+  cambiarNuncaEmpleado() {
+    this.empleo.nunca_empleado = !this.empleo.nunca_empleado;
+    if (this.empleo.nunca_empleado) {
+      this.habilitarSinEmpleo = false;
+      this.habilitarEmpleo = false;
+      this.empleo.sin_empleo = false;
+      this.habilitarOtro = false;
+      this.empleo.empleo = null;
+      this.empleo.otro = false;
+      this.habilitarDescripcionOtro = false;
+      this.empleo.descripcion_otro = null;
+      this.empleoForm.controls['vDescripcionOtro'].setValidators([]);
+      this.empleoForm.controls['vDescripcionOtro'].updateValueAndValidity();
     } else {
       this.habilitarSinEmpleo = true;
       this.habilitarEmpleo = true;
+      this.habilitarOtro = true;
     }
   }
 
-  cambiarSinEmpleo(){
+  cambiarSinEmpleo() {
     this.empleo.sin_empleo = !this.empleo.sin_empleo;
-    if(this.empleo.sin_empleo){
+    if (this.empleo.sin_empleo) {
       this.habilitarEmpleo = false;
-      this.empleo.empleo = undefined;
+      this.habilitarOtro = false;
+      this.empleo.otro = false;
+      this.empleo.empleo = null;
+      this.habilitarDescripcionOtro = false;
+      this.empleo.descripcion_otro = null;
+      this.empleoForm.controls['vDescripcionOtro'].setValidators([]);
+      this.empleoForm.controls['vDescripcionOtro'].updateValueAndValidity();
     } else {
       this.habilitarEmpleo = true;
+      this.habilitarOtro = true;
+      this.empleo.descripcion_otro = null;
     }
   }
 
-  async guardar(){
-    console.log('empleo',this.empleo);
+  async guardar() {
+    console.log('empleo', this.empleo);
     this.mensaje = null;
     if (this.util.validar(this.empleoForm)) {
       this.cargando = true;
@@ -112,5 +156,21 @@ export class EmpleoComponent implements OnInit {
       }
       this.cargando = false;
     }
+  }
+
+  cambiarOtro() {
+    this.empleo.otro = !this.empleo.otro;
+    if (this.empleo.otro) {
+      this.habilitarDescripcionOtro = true;
+      this.empleo.empleo = null;
+      this.habilitarEmpleo = false;
+      this.empleoForm.controls['vDescripcionOtro'].setValidators([Validators.required]);
+    } else {
+      this.habilitarEmpleo = true;
+      this.empleo.descripcion_otro = null;
+      this.habilitarDescripcionOtro = false;
+      this.empleoForm.controls['vDescripcionOtro'].setValidators([]);
+    }
+    this.empleoForm.controls['vDescripcionOtro'].updateValueAndValidity();
   }
 }

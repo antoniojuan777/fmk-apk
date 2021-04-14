@@ -174,6 +174,29 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <tr (click)="irRespuestaResultado()">
+                                                    <td style="width: 40px;"><i class="fa fa-file-text"></i></td>
+                                                    <td>Respuestas / resultados</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVer() && respuesta">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrar() && !respuesta">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditar() && respuesta">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

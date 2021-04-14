@@ -1,0 +1,216 @@
+<loading *ngIf="cargando"></loading>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Registro respuestas / resultados</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Respuestas</h3>
+                        </div>
+                        <hr>
+                        <mensaje *ngIf="mensaje" [mensaje]="mensaje"></mensaje>
+                        <form [formGroup]="respuestaForm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="cita" class="form-check-label">
+                                                <input type="checkbox" id="cita"
+                                                    [checked]="respuesta.cita"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.cita = !respuesta.cita"
+                                                    class="form-check-input">Se da una cita
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="informacion" class="form-check-label">
+                                                <input type="checkbox" id="informacion"
+                                                    [checked]="respuesta.informacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.informacion = !respuesta.informacion"
+                                                    class="form-check-input">Se da información
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="consejo_orientacion" class="form-check-label">
+                                                <input type="checkbox" id="consejo_orientacion"
+                                                    [checked]="respuesta.consejo_orientacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.consejo_orientacion = !respuesta.consejo_orientacion"
+                                                    class="form-check-input">Consejo orientación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="canalizacion_derivacion" class="form-check-label">
+                                                <input type="checkbox" id="canalizacion_derivacion"
+                                                    [checked]="respuesta.canalizacion_derivacion"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.canalizacion_derivacion = !respuesta.canalizacion_derivacion"
+                                                    class="form-check-input">Canalización / derivación
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="escucha_inmediata" class="form-check-label">
+                                                <input type="checkbox" id="escucha_inmediata"
+                                                    [checked]="respuesta.escucha_inmediata"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.escucha_inmediata = !respuesta.escucha_inmediata"
+                                                    class="form-check-input">Escucha inmediata / manejo de crisis
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="indicaciones" class="form-check-label">
+                                                <input type="checkbox" id="indicaciones"
+                                                    [checked]="respuesta.indicaciones"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.indicaciones = !respuesta.indicaciones"
+                                                    class="form-check-input">Indicaciones, sugerencias
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="acompaniamiento" class="form-check-label">
+                                                <input type="checkbox" id="acompaniamiento"
+                                                    [checked]="respuesta.acompaniamiento"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.acompaniamiento = !respuesta.acompaniamiento"
+                                                    class="form-check-input">Acompañamiento
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="cuidados_medicos" class="form-check-label">
+                                                <input type="checkbox" id="cuidados_medicos"
+                                                    [checked]="respuesta.cuidados_medicos"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.cuidados_medicos = !respuesta.cuidados_medicos"
+                                                    class="form-check-input">Cuidados médicos
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="higiene" class="form-check-label">
+                                                <input type="checkbox" id="higiene"
+                                                    [checked]="respuesta.higiene"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.higiene = !respuesta.higiene"
+                                                    class="form-check-input">Higiene / ropa limpia
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="acogida" class="form-check-label">
+                                                <input type="checkbox" id="acogida"
+                                                    [checked]="respuesta.acogida"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.acogida = !respuesta.acogida"
+                                                    class="form-check-input">Acogica (día o noche)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otro" class="form-check-label">
+                                                <input type="checkbox" id="otro"
+                                                    [checked]="respuesta.otro"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    (change)="respuesta.otro = !respuesta.otro"
+                                                    class="form-check-input">Otro
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <br><br>
+                        <div class="card-title">
+                            <h3 class="text-center title-2">Resultados</h3>
+                        </div>
+                        <hr>
+                        <form [formGroup]="resultadoForm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="resultado" class="control-label mb-1">Resultado</label>
+                                        <select id="resultado" class="form-control" formControlName="vResultado"
+                                            [(ngModel)]="resultado.resultado"
+                                            [attr.disabled]="modoLectura || !habilitarResultado?true:null">
+                                            <option value="{{resultado.codigo}}" *ngFor="let resultado of resultados">
+                                                {{resultado.valor}}
+                                            </option>
+                                        </select>
+                                        <mensaje-error-input [control]="frdo.vResultado"></mensaje-error-input>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otro_resultado" class="form-check-label">
+                                                <input type="checkbox" id="otro_resultado" [checked]="resultado.otro"
+                                                    (change)="cambiarOtro()"
+                                                    [attr.disabled]="modoLectura?true:null"
+                                                    class="form-check-input">Otro resultado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="descripcion_otro" class="control-label mb-1">Descripción otro resultado</label>
+                                        <input id="descripcion_otro" type="text" class="form-control" formControlName="vDescripcionOtro"
+                                            [(ngModel)]="resultado.descripcion_otro" [readonly]="modoLectura || !habilitarDescripcionOtro">
+                                        <mensaje-error-input [control]="frdo.vDescripcionOtro"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button *ngIf="!modoLectura" type="submit" class="btn btn-primary"
+                            (click)="guardar()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { Empleo } from "src/app/clases/Empleo";
 import { Familia } from "src/app/clases/Familia";
 import { Fuente } from "src/app/clases/Fuente";
 import { Peticion } from "src/app/clases/Peticion";
+import { Respuesta } from "src/app/clases/Respuesta";
 import { Parcero } from "../../../Parcero";
 import { User } from "../../../User";
 import { ResponseGlobal } from "../../ResponseGlobal";
@@ -17,7 +18,8 @@ export class ResponseDatosIniciales extends ResponseGlobal {
         public familia: Familia,
         public empleo: Empleo,
         public condicion: Condicion,
-        public peticion: Peticion
+        public peticion: Peticion,
+        public respuesta: Respuesta
     ) {
         super(ok, mensaje);
     }

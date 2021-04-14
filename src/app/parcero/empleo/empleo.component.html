@@ -32,8 +32,7 @@
                                                 <div class="checkbox">
                                                     <label for="sin_empleo" class="form-check-label">
                                                         <input type="checkbox" id="sin_empleo"
-                                                            [checked]="empleo.sin_empleo"
-                                                            (change)="cambiarSinEmpleo()"
+                                                            [checked]="empleo.sin_empleo" (change)="cambiarSinEmpleo()"
                                                             [attr.disabled]="modoLectura || !habilitarSinEmpleo?true:null"
                                                             class="form-check-input">Sin empleo
                                                     </label>
@@ -46,12 +45,37 @@
                                     <div class="form-group">
                                         <label for="empleo" class="control-label mb-1">Empleo</label>
                                         <select id="empleo" class="form-control" formControlName="vEmpleo"
-                                            [(ngModel)]="empleo.empleo" [attr.disabled]="modoLectura || !habilitarEmpleo?true:null">
+                                            [(ngModel)]="empleo.empleo"
+                                            [attr.disabled]="modoLectura || !habilitarEmpleo?true:null">
                                             <option value="{{empleo.codigo}}" *ngFor="let empleo of empleos">
                                                 {{empleo.valor}}
                                             </option>
                                         </select>
                                         <mensaje-error-input [control]="f.vEmpleo"></mensaje-error-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label for="otro" class="form-check-label">
+                                                <input type="checkbox" id="otro" [checked]="empleo.otro"
+                                                    (change)="cambiarOtro()"
+                                                    [attr.disabled]="modoLectura || !habilitarOtro?true:null"
+                                                    class="form-check-input">Otro empleo
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="descripcion_otro" class="control-label mb-1">Descripción otro empleo</label>
+                                        <input id="descripcion_otro" type="text" class="form-control" formControlName="vDescripcionOtro"
+                                            [(ngModel)]="empleo.descripcion_otro" [readonly]="modoLectura || !habilitarDescripcionOtro">
+                                        <mensaje-error-input [control]="f.vDescripcionOtro"></mensaje-error-input>
                                     </div>
                                 </div>
                             </div>
