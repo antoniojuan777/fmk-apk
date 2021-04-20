@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Condicion } from 'src/app/clases/Condicion';
 import { Accion, IdRol, TipoMensaje } from 'src/app/clases/Constantes';
+import { Droga } from 'src/app/clases/Droga';
 import { Empleo } from 'src/app/clases/Empleo';
 import { Familia } from 'src/app/clases/Familia';
 import { Fuente } from 'src/app/clases/Fuente';
@@ -33,6 +34,7 @@ export class DetalleParceroComponent implements OnInit {
   condicion: Condicion;
   peticion: Peticion;
   respuesta: Respuesta;
+  droga: Droga;
 
   constructor(
     private param: ParamService,
@@ -69,6 +71,7 @@ export class DetalleParceroComponent implements OnInit {
       this.condicion = resDatosIniciales.condicion;
       this.peticion = resDatosIniciales.peticion;
       this.respuesta = resDatosIniciales.respuesta;
+      this.droga = resDatosIniciales.droga;
       this.cargando = false;
     });
 
@@ -104,6 +107,10 @@ export class DetalleParceroComponent implements OnInit {
 
   irRespuestaResultado() {
     this.router.navigate(['/parcero/registro-respuesta-resultado', this.parcero.id]);
+  }
+
+  irDroga() {
+    this.router.navigate(['/parcero/registro-droga', this.parcero.id]);
   }
 
   botonVer() {

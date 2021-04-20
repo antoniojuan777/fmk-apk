@@ -1,4 +1,5 @@
 import { Condicion } from "src/app/clases/Condicion";
+import { Droga } from "src/app/clases/Droga";
 import { Empleo } from "src/app/clases/Empleo";
 import { Familia } from "src/app/clases/Familia";
 import { Fuente } from "src/app/clases/Fuente";
@@ -19,7 +20,8 @@ export class ResponseDatosIniciales extends ResponseGlobal {
         public empleo: Empleo,
         public condicion: Condicion,
         public peticion: Peticion,
-        public respuesta: Respuesta
+        public respuesta: Respuesta,
+        public droga: Droga
     ) {
         super(ok, mensaje);
     }

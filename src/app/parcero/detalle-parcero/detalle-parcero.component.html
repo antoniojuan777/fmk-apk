@@ -197,6 +197,29 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <tr (click)="irDroga()">
+                                                    <td style="width: 40px;"><i class="fa fa-flask"></i></td>
+                                                    <td>Uso de drogas</td>
+                                                    <td class="text-right">
+                                                        <div class="table-data-feature">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Ver"
+                                                                *ngIf="botonVer() && droga">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Registrar"
+                                                                *ngIf="botonRegistrar() && !droga">
+                                                                <i class="fa fa-plus-circle"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Modificar"
+                                                                *ngIf="botonEditar() && droga">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
